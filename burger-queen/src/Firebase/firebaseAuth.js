@@ -3,8 +3,8 @@
 import { app, getAuth, signInWithEmailAndPassword } from './firebaseApp';
 
 export const auth = getAuth(app);
-export const signIn = (email, password) => {
-  signInWithEmailAndPassword(auth, email, password).then((userCredential) => {
+export const signIn = (email, password) => signInWithEmailAndPassword(auth, email, password);
+/* .then((userCredential) => {
     const { user } = userCredential;
     console.log(user);
     return user;
@@ -12,6 +12,6 @@ export const signIn = (email, password) => {
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
+      console.log(errorMessage);
       return errorMessage;
-    });
-};
+    }); */

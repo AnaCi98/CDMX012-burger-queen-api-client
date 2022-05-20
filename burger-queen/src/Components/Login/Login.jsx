@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import { useNavigate } from 'react-router-dom';
@@ -7,12 +8,13 @@ import { signIn } from '../../Firebase/firebaseAuth';
 
 function Login() {
   const navigate = useNavigate();
-  // eslint-disable-next-line no-unused-vars
   const [user, setUser] = useState();
   const [password, setPassword] = useState();
   const handleSignInClick = (userMail, userPassword) => {
-    signIn(userMail, userPassword);
-    navigate('/waiter');
+    signIn(userMail, userPassword).then((userCredential) => {
+      console.log(userCredential);
+      navigate('/waiter');
+    }).catch((error) => console.log(error.message));
   };
   return (
     <div className="Login">

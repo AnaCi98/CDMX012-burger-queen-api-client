@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
 import Login from './Components/Login/Login';
-import Waiter from './Components/Login/Waiter/Waiter';
+import Waiter from './Components/Waiter/Waiter';
 
 function App() {
   return (
