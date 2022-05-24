@@ -1,19 +1,16 @@
 /* eslint-disable no-console */
-import { Routes, Route } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import Login from './Login/Login';
 import Waiter from './Waiter/Waiter';
 import Order from './Waiter/Order';
 import { onAuthStateChanged } from '../Firebase/firebaseApp';
 import { auth } from '../Firebase/firebaseAuth';
-// eslint-disable-next-line import/named
-import { getRole } from '../Firebase/firebaseFirestore';
+import { getDocuments } from '../Firebase/firebaseFirestore';
 
 function Paths() {
-  // eslint-disable-next-line no-unused-vars
   const [activeRole, setActiveRole] = useState(null);
   const [activeUser, setActiveUser] = useState(null);
-  // eslint-disable-next-line no-unused-vars
   useEffect(() => {
     const getUser = () => {
       onAuthStateChanged(auth, (user) => {
@@ -24,28 +21,47 @@ function Paths() {
   }, []);
 
   useEffect(() => {
-    if (activeUser !== null) {
-      const settingRole = () => {
-        const newRole = getRole(activeUser);
-        console.log(newRole, 'active role en useEffect');
-        setActiveRole(newRole);
-      };
-      settingRole();
-    }
+    const settingRole = () => {
+      getDocuments().then((docs) => {
+        docs.forEach((doc) => {
+          if (doc.id === activeUser) {
+            const newRole = (doc.data().rol).toString();
+            console.log(newRole);
+            setActiveRole(newRole);
+          }
+        });
+      });
+    }; settingRole();
   }, [activeUser]);
-  /* useEffect(() => {
-    setTimeout(() => {
-      console.log(activeRole);
-    }, 5000);
-  }, [activeRole]); */
 
-  return (
-    <Routes>
-      <Route path="/" element={<Login />} />
-      <Route path="/waiter" element={<Waiter />} />
-      <Route path="/order" element={<Order />} />
-    </Routes>
-  );
+  console.log(activeRole);
+
+  switch (activeRole) {
+    case 'meserx':
+      return (
+        <Routes>
+          <Route path="/waiter" element={<Waiter />} />
+          <Route path="/order" element={<Order />} />
+        </Routes>
+      );
+    case 'admin':
+      // eslint-disable-next-line consistent-return
+      return (
+        <Routes>
+          <Route path="/" element={<Login />} />
+          ;
+        </Routes>
+      );
+      // <h1>ADMIN en construcción</h1>;
+    default:
+      // eslint-disable-next-line consistent-return
+      return (
+        <Routes>
+          <Route path="/" element={<Login />} />
+          ;
+        </Routes>
+      );
+  }
 }
 
 export default Paths;

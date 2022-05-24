@@ -10,18 +10,9 @@ const empleadxs = collection(db, 'Empleadxs');
 // eslint-disable-next-line no-unused-vars
 // eslint-disable-next-line import/no-mutable-exports
 
-export const getRole = (activeUser) => {
-  console.log(activeUser, 'active user en firestore');
-  let profile = '';
-  getDocs(empleadxs).then((docs) => {
-    docs.forEach((doc) => {
-      if (doc.id === activeUser) {
-        profile = (doc.data().rol).toString();
-      }
-    });
-    console.log(profile, 'firestore');
-    return profile;
-  });
+export const getDocuments = async () => {
+  const documents = await getDocs(empleadxs);
+  return documents;
 };
 // eslint-disable-next-line import/no-mutable-exports
 // const active = query((empleadxs), where('id', '==', activeUser));
