@@ -8,7 +8,7 @@ function Waiter() {
           Órdenes
           <button className="Clients-add" id="CientsAdd" type="button">+</button>
         </section>
-        <section>Bienvenidx a tu turno</section>
+        <section className="Clients-orders-section">Bienvenidx a tu turno</section>
       </object>
       <aside className="Nav-right">
         <section className="Notifications">
