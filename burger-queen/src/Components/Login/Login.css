@@ -11,6 +11,10 @@ body {
 }
 .Login-error{
     font-family: 'Belleza', sans-serif;
+    font-weight: bold;
+    font-size: 40px;
+    color: #F45252;
+    align-self: center;
 }
 .Login-left-section {
     display: flex;
@@ -35,6 +39,7 @@ body {
 }
 
 input {
+    font-family: 'Belleza', sans-serif;
     background-color: #FFF8D9;
     height: 5vh;
     font-size: 3vh;
