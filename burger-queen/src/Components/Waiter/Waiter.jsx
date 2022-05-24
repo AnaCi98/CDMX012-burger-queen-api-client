@@ -10,6 +10,13 @@ function Waiter() {
         </section>
         <section>Bienvenidx a tu turno</section>
       </object>
+      <aside className="Nav-right">
+        <section className="Notifications">
+          <img className="Bell-icon" alt="bell icon" src="../img/BellIcon.png" />
+          <p className="Notifications-Text" />
+        </section>
+        <button className="End-session" id="EndSession" type="button">Fin de Turno</button>
+      </aside>
     </div>
   );
 }

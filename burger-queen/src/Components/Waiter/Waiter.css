@@ -1,29 +1,87 @@
-.Table-section, .Clients-section{
-    width: 450px;
-    height: 240px;
+body{
+    margin: 0;
+    padding: 0;
+}
+
+.Waiter{
+    background-color: #D5DBB3;
+    display: flex;
+    justify-content: flex-end;
+    margin: 0;
+    padding: 0;
+}
+
+.Clients-section{
+    width: 50vw;
+    height: 10vh;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    padding: 0;
+    z-index: 0;
+    margin-right: 25vw;
 }
 
-.Table-title, .Clients-title{
+.Clients-title{
     background-color: #FFF8D9;
     border-radius: 12px;
     width: 433px;
     height: 60px;
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
-.Table {
+.Clients-add {
     background-color: #FFF8D9;
-    width: 70px;
+    height: 8vh;
+    width: 50px;
+    border: none;
+    border-radius: 12px;
+    margin-left: 25%;
+    margin-right: 2%;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.Clients-names {
+    background-color: #FFF8D9;
+    width: 200px;
     height: 70px;
     border: none;
     border-radius: 12px;
     margin: 10px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.Nav-right{
+    height: 100vh;
+    width: 10vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 2%;
+    z-index: 1;
+    right: 0%;
+    padding: 0;
+}
+.Notifications{
+    height: 75vh;
+    width: 10vw;
+    background-color: #FFF8D9;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 2%;
+    z-index: 1;
+}
+.Bell-icon{
+    height: 10vh;
+}
+.End-session {
+    width: 10vw;
+    height: 10vh;
+    border: none;
+    border-radius: 0px, 0px, 0px, 12px;
+    background-color: #FFF8D9;
+    justify-self: flex-end;
+    bottom: 0%;
 }
