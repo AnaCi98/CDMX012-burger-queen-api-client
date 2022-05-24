@@ -14,7 +14,6 @@ function Paths() {
   const [activeRole, setActiveRole] = useState(null);
   const [activeUser, setActiveUser] = useState(null);
   // eslint-disable-next-line no-unused-vars
-  console.log(typeof empleadxs, 'afuera de todo');
   useEffect(() => {
     const getUser = () => {
       onAuthStateChanged(auth, (user) => {
@@ -25,22 +24,20 @@ function Paths() {
   }, []);
 
   useEffect(() => {
-    const getActiveRole = () => {
-      if (activeUser !== null) {
-        console.log(activeUser, 'adentro de get role');
-        setActiveRole(getRole(activeUser));
-        /* .then((docs) => {
-          docs.forEach((doc) => {
-            role = doc.rol;
-          });
-        }); */
-        console.log(activeRole);
-      }
-    };
-    getActiveRole();
-
-    console.log('se ejecuta useEffect active user');
+    if (activeUser !== null) {
+      const settingRole = () => {
+        const newRole = getRole(activeUser);
+        console.log(newRole, 'active role en useEffect');
+        setActiveRole(newRole);
+      };
+      settingRole();
+    }
   }, [activeUser]);
+  /* useEffect(() => {
+    setTimeout(() => {
+      console.log(activeRole);
+    }, 5000);
+  }, [activeRole]); */
 
   return (
     <Routes>

@@ -12,14 +12,14 @@ const empleadxs = collection(db, 'Empleadxs');
 
 export const getRole = (activeUser) => {
   console.log(activeUser, 'active user en firestore');
-  const profile = [];
+  let profile = '';
   getDocs(empleadxs).then((docs) => {
     docs.forEach((doc) => {
       if (doc.id === activeUser) {
-        profile.push(doc.data());
-        console.log(profile, 'getRole');
+        profile = (doc.data().rol).toString();
       }
     });
+    console.log(profile, 'firestore');
     return profile;
   });
 };
