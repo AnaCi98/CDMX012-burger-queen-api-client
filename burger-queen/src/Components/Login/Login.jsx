@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-console */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
@@ -9,18 +10,29 @@ import { signIn } from '../../Firebase/firebaseAuth';
 function Login() {
   const navigate = useNavigate();
   const [user, setUser] = useState();
+  const [loginError, setLoginError] = useState();
   const [password, setPassword] = useState();
   const handleSignInClick = (userMail, userPassword) => {
     // eslint-disable-next-line no-unused-vars
     signIn(userMail, userPassword).then((userCredential) => {
       navigate('/waiter');
-    }).catch((error) => console.log(error.message));
+    }).catch((error) => {
+      console.log(error.code);
+      switch (error.code) {
+        case 'auth/user-not-found':
+          return setLoginError('Ingresa un usuarix validx');
+        case 'auth/wrong-password':
+          return setLoginError('Ingresa la contraseña correcta');
+        default: return setLoginError('');
+      }
+    });
   };
+
   return (
     <div className="Login">
       <section className="Login-left-section">
         <img className="Login-logo" alt="Login burger queen logo" src="../img/Burger Queen.png" />
-        <p className="Login-error" />
+        <p className="Login-error">{loginError}</p>
       </section>
       <form className="Login-form">
         <img className="Login-top-bun" alt="login burger bun" src="../img/TopBun.png" />
