@@ -3,7 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import Login from './Login/Login';
 import Waiter from './Waiter/Waiter';
-import Order from './Waiter/Order';
+import Order from './Order/Order';
 import { onAuthStateChanged } from '../Firebase/firebaseApp';
 import { auth } from '../Firebase/firebaseAuth';
 import { getDocuments } from '../Firebase/firebaseFirestore';

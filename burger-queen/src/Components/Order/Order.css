@@ -1,0 +1,66 @@
+    /* TABLET */
+    @media screen and (min-width: 540px) {      
+    .sectionOrders{
+        background-color: #EBA83A;
+        width: 34%;
+        height: 100vh;
+        position: absolute;
+        right: 0;
+        top: 0;
+        border-top-left-radius: 12px;
+        border-bottom-left-radius: 12px;
+        box-shadow: -4px 4px 4px rgb(0, 0, 0, 0.25);
+        display: flex;
+        justify-content: center;
+    }
+    .options{
+        position: absolute;
+        top: 10%;
+        left: 14%;
+        display: flex;
+        column-gap: 5%;
+    }
+    .options button{
+        background-color: #EBA83A;
+        width: 29vh;
+        height: 7vh;
+        font-size: 1.4rem;
+        border: none;
+        border-radius: 12px;
+        box-shadow: -4px 4px 4px rgb(0, 0, 0, 0.25);
+    }
+    .pressTypeFood{
+        background-color: #EBA83A;
+        width: 29vh;
+        height: 7vh;
+        font-size: 1.4rem;
+        border: none;
+        border-radius: 12px;
+        box-shadow: -4px 4px 4px rgb(0, 0, 0, 0.25);
+        box-shadow: inset 0 0 10px #000000;
+    }
+    .Back{
+        position: absolute;
+        top: 4%;
+        left: 3%;
+        width: 8vh;
+    }
+    .Products{
+        position:absolute;
+        top: 22%;
+        left: 14%;
+    }
+    .Send{
+        position: absolute;
+        bottom: 7%;
+        right: 9%;
+        width: 10vh;
+        height: 9vh;
+    }
+    .messageSend{
+        position: absolute;
+        bottom: 1%;
+        right: 9%;
+        font-weight: bold;
+    }
+    }

@@ -23,6 +23,8 @@ function Login() {
           return setLoginError('Ingresa un usuarix validx');
         case 'auth/wrong-password':
           return setLoginError('Ingresa la contraseña correcta');
+        case 'auth/invalid-email':
+          return setLoginError('Ingresa tu usuarix y contraseña');
         default: return setLoginError('');
       }
     });
