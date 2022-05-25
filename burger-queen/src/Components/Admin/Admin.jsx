@@ -1,8 +1,6 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-import './Admin.css';
-
 function Admin() {
   return (
     <section>

@@ -29,13 +29,13 @@ article p{
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            font-family: Belleza;
-            /* font-weight: bold; */
-            font-size: 1.3rem;
-            text-align: center;
-    
+            padding: 0;    
         }
         article p{
             margin: 2%;
+            font-family: Belleza;
+            /* font-weight: bold; */
+            text-align: center;
+            font-size: 1.3rem;
         }
     }
