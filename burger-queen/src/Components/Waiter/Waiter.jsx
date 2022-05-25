@@ -3,7 +3,6 @@ import './Waiter.css';
 
 function Waiter() {
   const navigate = useNavigate();
-
   return (
     <div className="Waiter">
       <object className="Clients-section">

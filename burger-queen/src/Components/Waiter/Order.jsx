@@ -10,7 +10,7 @@ function Order() {
   const navigate = useNavigate();
 
   return (
-    <section>
+    <section className="allMenu">
       <img onClick={() => { navigate('/waiter'); }} className="Back" alt="button to return" src="../img/Back.png" />
       <div className="options">
         <button type="submit">
@@ -24,7 +24,7 @@ function Order() {
         <Products />
       </div>
       <aside className="sectionOrders">
-        <h3>Orden Mesa 4</h3>
+        <p className="nameTable">Orden Mesa 4</p>
         <img className="Send" alt="button to send order" src="../img/Send.png" />
         <p className="messageSend">Enviar a cocina</p>
       </aside>
