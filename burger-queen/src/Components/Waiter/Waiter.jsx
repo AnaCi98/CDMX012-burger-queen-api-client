@@ -3,6 +3,13 @@ import './Waiter.css';
 
 function Waiter() {
   const navigate = useNavigate();
+
+  const data = () => {
+    fetch(new Request('http://localhost:3000/posts'))
+      .then((response) => response.json())
+      .then((db) => console.log(db));
+  };
+  data();
   return (
     <div className="Waiter">
       <object className="Clients-section">
