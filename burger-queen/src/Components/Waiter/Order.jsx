@@ -1,13 +1,17 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 // import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Order.css';
 import Products from './Products';
 
 function Order() {
 //   const [buttonStyle, setButtonStyle] = useState('typeFood');
+  const navigate = useNavigate();
 
   return (
     <section>
-      <img className="Back" alt="button to return" src="../img/Back.png" />
+      <img onClick={() => { navigate('/waiter'); }} className="Back" alt="button to return" src="../img/Back.png" />
       <div className="options">
         <button type="submit">
           Desayunos
