@@ -7,6 +7,7 @@ import Order from './Waiter/Order';
 import { onAuthStateChanged } from '../Firebase/firebaseApp';
 import { auth } from '../Firebase/firebaseAuth';
 import { getDocuments } from '../Firebase/firebaseFirestore';
+import Admin from './Admin/Admin';
 
 function Paths() {
   const [activeRole, setActiveRole] = useState(null);
@@ -49,7 +50,7 @@ function Paths() {
       // eslint-disable-next-line consistent-return
       return (
         <Routes>
-          <Route path="/" element={<Login />} />
+          <Route path="/admin" element={<Admin />} />
         </Routes>
       );
       // <h1>ADMIN en construcción</h1>;

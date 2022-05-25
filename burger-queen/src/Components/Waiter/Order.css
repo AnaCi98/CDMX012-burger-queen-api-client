@@ -1,5 +1,9 @@
-    /* TABLET */
-    @media screen and (min-width: 540px) {      
+    /* TABLET */ 
+    @media (min-width: 850px) and (orientation: landscape) {  
+        .allMenu{
+            width: 100%;
+            height: 100vh;
+        }   
     .sectionOrders{
         background-color: #EBA83A;
         width: 34%;
@@ -13,6 +17,10 @@
         display: flex;
         justify-content: center;
     }
+    .nameTable{
+        font-family: 'Cookie', cursive;
+        font-size: 2.2rem;
+    }
     .options{
         position: absolute;
         top: 10%;
@@ -24,10 +32,11 @@
         background-color: #EBA83A;
         width: 29vh;
         height: 7vh;
-        font-size: 1.4rem;
+        font-size: 2rem;
         border: none;
         border-radius: 12px;
         box-shadow: -4px 4px 4px rgb(0, 0, 0, 0.25);
+        font-family: 'Cookie', cursive;
     }
     .pressTypeFood{
         background-color: #EBA83A;
@@ -64,3 +73,82 @@
         font-weight: bold;
     }
     }
+    /* TABLET CUANDO ESTA EN VERTICAL*/
+    @media screen and (max-width: 849px){  
+        .allMenu{
+            width: 100%;
+            height: 100vh;
+        }       
+        .sectionOrders{
+            background-color: #EBA83A;
+            width: 100%;
+            height: 34%;
+            position: relative;
+            bottom: -66%;  
+            border-top-left-radius: 12px;
+            border-bottom-left-radius: 12px;
+            box-shadow: -4px 4px 4px rgb(0, 0, 0, 0.25);
+            display: flex;
+            justify-content: center;
+            justify-self: flex-end;
+        }
+        .options{
+            position: absolute;
+            top: 8%;
+            left: 22%;
+            display: flex;
+            column-gap: 5%;
+        }
+        .options button{
+            background-color: #EBA83A;
+            width: 25vh;
+            height: 5vh;
+            font-size: 2.1rem;
+            border: none;
+            border-radius: 12px;
+            box-shadow: -4px 4px 4px rgb(0, 0, 0, 0.25);
+            font-family: 'Cookie', cursive;
+
+        }
+        .pressTypeFood{
+            background-color: #EBA83A;
+            width: 29vh;
+            height: 7vh;
+            font-size: 1.4rem;
+            border: none;
+            border-radius: 12px;
+            box-shadow: -4px 4px 4px rgb(0, 0, 0, 0.25);
+            box-shadow: inset 0 0 10px #000000;
+        }
+        .Back{
+            position: absolute;
+            top: 4%;
+            left: 5%;
+            width: 7vh;
+        }
+        .Products{
+            position:absolute;
+            top: 18%;
+            left: 23%;
+        }
+        .Send{
+            position: absolute;
+            top: 60%;
+            right: 5%;
+            width: 10vh;
+            height: 9vh;
+        }
+        .messageSend{
+            position: absolute;
+            top: 80%;
+            right: 5%;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        .nameTable{
+            position: relative;
+            right: 20%;
+            font-family: 'Cookie', cursive;
+            font-size: 2.2rem;
+        }
+        }

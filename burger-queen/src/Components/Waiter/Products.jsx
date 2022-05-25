@@ -3,8 +3,8 @@ import './Products.css';
 function Products() {
   return (
     <article>
-      <p>Producto</p>
-      <p>Precio</p>
+      <p>Hamburguesa sencilla</p>
+      <p>$50</p>
     </article>
   );
 }

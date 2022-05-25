@@ -1,12 +1,14 @@
+import { useNavigate } from 'react-router-dom';
 import './Waiter.css';
 
 function Waiter() {
+  const navigate = useNavigate();
   return (
     <div className="Waiter">
       <object className="Clients-section">
         <section className="Clients-title">
           Órdenes
-          <button className="Clients-add" id="CientsAdd" type="button">+</button>
+          <button onClick={() => { navigate('/order'); }} className="Clients-add" id="CientsAdd" type="button">+</button>
         </section>
         <section className="Clients-orders-section">Bienvenidx a tu turno</section>
       </object>
