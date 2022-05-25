@@ -40,6 +40,7 @@ function Paths() {
     case 'meserx':
       return (
         <Routes>
+          <Route path="/" element={<Login />} />
           <Route path="/waiter" element={<Waiter />} />
           <Route path="/order" element={<Order />} />
         </Routes>
@@ -49,7 +50,6 @@ function Paths() {
       return (
         <Routes>
           <Route path="/" element={<Login />} />
-          ;
         </Routes>
       );
       // <h1>ADMIN en construcción</h1>;
