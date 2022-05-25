@@ -1,19 +1,30 @@
 {
-  "posts": [
+  "products": [
     {
       "id": 1,
-      "title": "json-server",
-      "author": "typicode"
+      "name": "dish",
+      "price": "$00.00",
+      "image": "URL",
+      "type": "type/category",
+      "dateEntry": "00/00/00"
     }
   ],
-  "comments": [
+  "order": [
     {
       "id": 1,
-      "body": "some comment",
-      "postId": 1
+      "client": "client1",
+      "userId": "idWaiter",
+      "products": [
+        { 
+          "product": {
+            "qty": 0,
+            "product": {}
+          }
+        }
+      ],
+      "status": "status",
+      "dateEntry": "00/00/00",
+      "dateProcessed": "00:00"
     }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
+  ]
 }

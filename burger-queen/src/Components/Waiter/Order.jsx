@@ -13,10 +13,10 @@ function Order() {
     <section className="allMenu">
       <img onClick={() => { navigate('/waiter'); }} className="Back" alt="button to return" src="../img/Back.png" />
       <div className="options">
-        <button type="submit">
+        <button type="button">
           Desayunos
         </button>
-        <button type="submit">
+        <button type="button">
           Comidas
         </button>
       </div>
