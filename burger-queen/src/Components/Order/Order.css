@@ -52,8 +52,11 @@
     }
     .Products{
         position:absolute;
+        display: grid;
+        grid-template-columns: 22vh 22vh;
+        grid-column-gap: 8%;
         top: 18%;
-        left: 23%;
+        left: 23.5%;
     }
     .Send{
         position: absolute;
@@ -141,8 +144,11 @@
     }
     .Products{
         position:absolute;
+        display: grid;
+        grid-template-columns: 25vh 25vh;
+        grid-column-gap: 9%;
         top: 22%;
-        left: 14%;
+        left: 15%;
     }
     .Send{
         position: absolute;

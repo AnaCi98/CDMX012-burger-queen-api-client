@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 // import { useState } from 'react';
@@ -8,7 +9,9 @@ import Products from '../Products/Products';
 import dataProducts from '../data';
 
 function Order() {
-//   const [buttonStyle, setButtonStyle] = useState('typeFood');
+  // const [buttonStyle, setButtonStyle] = useState('typeFood');
+  // const [pressButtonStyle, setPressButtonStyle] = useState('typeFood');
+  const [listOrder, setListOrder] = useState([]);
   const [products, setProducts] = useState();
   const [typeFood, setTypeFood] = useState('meal');
   const navigate = useNavigate();
@@ -17,18 +20,14 @@ function Order() {
     const allProducts = await dataProducts('products');
     setProducts(allProducts);
   };
-  // .filter((food) => food.type === typeFood)
+  const addList = (product) => {
+    setListOrder([...listOrder, product]);
+    console.log(listOrder);
+  };
+
   useEffect(() => {
     dataProduct();
   }, []);
-
-  // const typeFood = () => {
-  //   products.forEach((product) => {
-  //     if (product.type) {
-  //       setProducts(product);
-  //     }
-  //   });
-  // };
 
   return (
     <section className="allMenu">
@@ -42,13 +41,13 @@ function Order() {
         </button>
       </div>
       <div className="Products">
-        <Products products={products} typeFood={typeFood} />
+        <Products products={products} typeFood={typeFood} addList={addList} />
       </div>
-      <aside className="sectionOrders">
+      <section className="sectionOrders">
         <p className="nameTable">Orden Mesa 4</p>
         <img className="Send" alt="button to send order" src="../img/Send.png" />
         <p className="messageSend">Enviar a cocina</p>
-      </aside>
+      </section>
     </section>
   );
 }
