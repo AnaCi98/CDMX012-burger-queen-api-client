@@ -1,6 +1,0 @@
-
-function ModalNewClient() {
-  return (
-    
-  );
-}

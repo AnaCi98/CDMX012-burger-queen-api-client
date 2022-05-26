@@ -1,11 +1,18 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable no-unused-vars */
 import './Products.css';
 
-function Products() {
+// eslint-disable-next-line react/prop-types
+function Products({ products, typeFood }) {
+  const productFilter = products.filter((product) => product.type === typeFood);
   return (
-    <article>
-      <p>Producto</p>
-      <p>Precio</p>
-    </article>
+    products ? productFilter.map((product) => (
+      <article>
+
+        <p>{product.name}</p>
+        <p>{product.price}</p>
+      </article>
+    )) : null
   );
 }
 
