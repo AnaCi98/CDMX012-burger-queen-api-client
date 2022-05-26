@@ -1,15 +1,20 @@
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import './Waiter.css';
+import { useState } from 'react';
+import ModalNewClient from '../ModalNewClient/ModalNewClient';
 
 function Waiter() {
-  const navigate = useNavigate();
-
+  // const navigate = useNavigate();
+  const [modal, setModal] = useState(false);
+  const closeModal = () => setModal(false);
+  console.log(modal);
   return (
     <div className="Waiter">
+      <ModalNewClient modal={modal} closeModal={closeModal} />
       <object className="Clients-section">
         <section className="Clients-title">
           Órdenes
-          <button onClick={() => { navigate('/order'); }} className="Clients-add" id="CientsAdd" type="button">+</button>
+          <button onClick={() => { setModal(true); }} className="Clients-add" id="CientsAdd" type="button">+</button>
         </section>
         <section className="Clients-orders-section">Bienvenidx a tu turno</section>
       </object>

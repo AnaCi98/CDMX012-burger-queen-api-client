@@ -1,0 +1,77 @@
+@media screen and (orientation: landscape){
+.Modal{
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, .5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} 
+.Modal-box{
+    height: 25vh;
+    width: 60vw;
+    background-color: #FFF8D9;
+    border-radius: 12px;
+    box-shadow: -4px 4px 4px 0px #00000040;
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    padding: 20px;
+
+}
+.Modal-header{
+    grid-row: 1;
+    font-family: Belleza;
+    display: flex;
+    align-items: flex-start;
+}
+.Modal-header-title{
+    margin: 0;
+    grid-column: 1;
+    width: 95%;
+    justify-self: flex-start;
+}
+button{
+    background-color: #FFF8D9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-style: none;
+
+}
+.Modal-close{
+    grid-column: 2;
+    justify-self: flex-end;
+    font-size: x-large;
+}
+.Modal-body{
+    grid-row: 2;
+    padding: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.Modal-body-input{
+    width: 90%;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #C32300;
+    border-radius: 12px;
+}
+.Modal-footer{
+    grid-row: 3;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 15px;
+    padding-bottom: 15px;
+}
+.Modal-submit{
+    border-radius: 5px;
+    align-self: center;
+    box-shadow: -4px 4px 4px 0px #00000040;
+    font-family: Belleza;
+    font-size: x-large;
+}
+}
