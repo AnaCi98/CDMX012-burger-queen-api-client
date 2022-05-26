@@ -4,9 +4,8 @@ import './Products.css';
 
 // eslint-disable-next-line react/prop-types
 function Products({ products, typeFood }) {
-  const productFilter = products.filter((product) => product.type === typeFood);
   return (
-    products ? productFilter.map((product) => (
+    products ? products.filter((product) => product.type === typeFood).map((product) => (
       <article>
 
         <p>{product.name}</p>

@@ -5,20 +5,21 @@ import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import './Order.css';
 import Products from '../Products/Products';
+import dataProducts from '../data';
 
 function Order() {
 //   const [buttonStyle, setButtonStyle] = useState('typeFood');
   const [products, setProducts] = useState();
-  const [typeFood, setTypeFood] = useState();
+  const [typeFood, setTypeFood] = useState('meal');
   const navigate = useNavigate();
 
-  const dataProducts = async () => {
-    const allProducts = await fetch('http://localhost:3004/products').then((response) => response.json());
+  const dataProduct = async () => {
+    const allProducts = await dataProducts('products');
     setProducts(allProducts);
   };
   // .filter((food) => food.type === typeFood)
   useEffect(() => {
-    dataProducts();
+    dataProduct();
   }, []);
 
   // const typeFood = () => {
