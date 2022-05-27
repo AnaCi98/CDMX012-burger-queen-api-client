@@ -6,12 +6,19 @@ import Waiter from './Waiter/Waiter';
 import Order from './Order/Order';
 import { onAuthStateChanged } from '../Firebase/firebaseApp';
 import { auth } from '../Firebase/firebaseAuth';
-import { getDocuments } from '../Firebase/firebaseFirestore';
+import { getRole } from '../Firebase/firebaseFirestore';
 import Admin from './Admin/Admin';
 
 function Paths() {
   const [activeRole, setActiveRole] = useState(null);
   const [activeUser, setActiveUser] = useState(null);
+  const [activeName, setActiveName] = useState(null);
+  const [newClient, setNewClient] = useState();
+
+  const getClientName = (clientName) => {
+    setNewClient(clientName);
+  };
+
   useEffect(() => {
     const getUser = () => {
       onAuthStateChanged(auth, (user) => {
@@ -23,27 +30,21 @@ function Paths() {
 
   useEffect(() => {
     const settingRole = () => {
-      getDocuments().then((docs) => {
-        docs.forEach((doc) => {
-          if (doc.id === activeUser) {
-            const newRole = (doc.data().rol).toString();
-            console.log(newRole);
-            setActiveRole(newRole);
-          }
-        });
+      getRole(activeUser).then((doc) => {
+        const employee = doc;
+        setActiveRole(employee.rol);
+        setActiveName(employee.name);
       });
     }; settingRole();
   }, [activeUser]);
-
-  console.log(activeRole);
 
   switch (activeRole) {
     case 'meserx':
       return (
         <Routes>
           <Route path="/" element={<Login />} />
-          <Route path="/waiter" element={<Waiter />} />
-          <Route path="/order" element={<Order />} />
+          <Route path="/waiter" element={<Waiter activeName={activeName} getClientName={getClientName} />} />
+          <Route path="/order" element={<Order newClient={newClient} />} />
         </Routes>
       );
     case 'admin':

@@ -3,20 +3,30 @@ import './Waiter.css';
 import { useState } from 'react';
 import ModalNewClient from '../ModalNewClient/ModalNewClient';
 
-function Waiter() {
+// eslint-disable-next-line react/prop-types
+function Waiter({ activeName, getClientName }) {
   // const navigate = useNavigate();
   const [modal, setModal] = useState(false);
   const closeModal = () => setModal(false);
-  console.log(modal);
+
   return (
     <div className="Waiter">
-      <ModalNewClient modal={modal} closeModal={closeModal} />
+      <ModalNewClient
+        modal={modal}
+        closeModal={closeModal}
+        activeName={activeName}
+        getClientName={getClientName}
+      />
       <object className="Clients-section">
         <section className="Clients-title">
           Órdenes
           <button onClick={() => { setModal(true); }} className="Clients-add" id="CientsAdd" type="button">+</button>
         </section>
-        <section className="Clients-orders-section">Bienvenidx a tu turno</section>
+        <section className="Clients-orders-section">
+          Bienvenidx a tu turno,
+          {' '}
+          {activeName}
+        </section>
       </object>
       <aside className="Nav-right">
         <section className="Notifications">

@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 // import { useState } from 'react';
@@ -7,12 +8,13 @@ import './Order.css';
 import Products from '../Products/Products';
 import dataProducts from '../data';
 
-function Order() {
+function Order({ newClient }) {
 //   const [buttonStyle, setButtonStyle] = useState('typeFood');
   const [products, setProducts] = useState();
   const [typeFood, setTypeFood] = useState('meal');
   const navigate = useNavigate();
 
+  console.log(newClient, 'en order');
   const dataProduct = async () => {
     const allProducts = await dataProducts('products');
     setProducts(allProducts);
@@ -45,7 +47,11 @@ function Order() {
         <Products products={products} typeFood={typeFood} />
       </div>
       <aside className="sectionOrders">
-        <p className="nameTable">Orden Mesa 4</p>
+        <p className="nameTable">
+          Orden
+          {' '}
+          {newClient}
+        </p>
         <img className="Send" alt="button to send order" src="../img/Send.png" />
         <p className="messageSend">Enviar a cocina</p>
       </aside>

@@ -8,7 +8,21 @@ import { app } from './firebaseApp';
 const db = getFirestore(app);
 const empleadxs = collection(db, 'Empleadxs');
 
-export const getDocuments = async () => {
-  const documents = await getDocs(empleadxs);
-  return documents;
+export const getRole = async (activeUser) => {
+  let document = '';
+  await getDocs(empleadxs).then((docs) => {
+    docs.forEach((doc) => {
+      if (doc.id === activeUser) {
+        // const newRole = (doc.data().rol).toString();
+        // console.log(newRole);
+        document = {
+          ...doc,
+          rol: doc.data().rol,
+          name: doc.data().nombre,
+        };
+      }
+    });
+  });
+  console.log(document);
+  return document;
 };
