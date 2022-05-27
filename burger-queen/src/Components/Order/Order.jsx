@@ -12,7 +12,6 @@ function Order() {
   // const [buttonStyle, setButtonStyle] = useState('typeFood');
   // const [pressButtonStyle, setPressButtonStyle] = useState('typeFood');
   const [listOrder, setListOrder] = useState([]);
-  const [client, setClient] = useState();
   const [lastOrder, setLastOrder] = useState();
   const [products, setProducts] = useState();
   const [typeFood, setTypeFood] = useState('meal');
@@ -22,12 +21,14 @@ function Order() {
     const allProducts = await dataProducts('products');
     setProducts(allProducts);
   };
+
   const theLastOrder = async () => {
     const allOrder = await dataProducts('order');
     setLastOrder(allOrder[allOrder.length - 1]);
     // setLastOrder(allOrder);
     console.log(lastOrder);
   };
+
   const addList = (product) => {
     const productOrder = {
       qty: 0,
@@ -37,11 +38,12 @@ function Order() {
     setListOrder([...listOrder, productOrder]);
     console.log(listOrder);
   };
+
   const addOrder = () => {
     const putMethod = {
-      method: 'PATCH', // Method itself
+      method: 'PATCH',
       headers: {
-        'Content-type': 'application/json; charset=UTF-8', // Indicates the content
+        'Content-type': 'application/json; charset=UTF-8',
       },
       body: JSON.stringify({
         // id: lastOrder.id,
@@ -60,6 +62,10 @@ function Order() {
     dataProduct();
     theLastOrder();
   }, []);
+
+  // useEffect(() => {
+  //   addOrder();
+  // }, [listOrder]);
 
   return (
     <section className="allMenu">

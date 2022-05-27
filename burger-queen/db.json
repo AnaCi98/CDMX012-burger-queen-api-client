@@ -62,11 +62,6 @@
           "qty": 0,
           "product": "dish",
           "price": "$00.00"
-        },
-        {
-          "qty": 0,
-          "product": "dish3",
-          "price": "$00.00"
         }
       ]
     }
