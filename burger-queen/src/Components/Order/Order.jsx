@@ -12,6 +12,8 @@ function Order() {
   // const [buttonStyle, setButtonStyle] = useState('typeFood');
   // const [pressButtonStyle, setPressButtonStyle] = useState('typeFood');
   const [listOrder, setListOrder] = useState([]);
+  const [client, setClient] = useState();
+  const [lastOrder, setLastOrder] = useState();
   const [products, setProducts] = useState();
   const [typeFood, setTypeFood] = useState('meal');
   const navigate = useNavigate();
@@ -20,13 +22,43 @@ function Order() {
     const allProducts = await dataProducts('products');
     setProducts(allProducts);
   };
+  const theLastOrder = async () => {
+    const allOrder = await dataProducts('order');
+    setLastOrder(allOrder[allOrder.length - 1]);
+    // setLastOrder(allOrder);
+    console.log(lastOrder);
+  };
   const addList = (product) => {
-    setListOrder([...listOrder, product]);
+    const productOrder = {
+      qty: 0,
+      product: product.name,
+      price: product.price,
+    };
+    setListOrder([...listOrder, productOrder]);
     console.log(listOrder);
+  };
+  const addOrder = () => {
+    const putMethod = {
+      method: 'PATCH', // Method itself
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8', // Indicates the content
+      },
+      body: JSON.stringify({
+        // id: lastOrder.id,
+        // client: 'NUEVOCLIENTE',
+        // userId: 'idWaiter',
+        products: listOrder,
+        // status: 'status',
+        // dateEntry: '00/00/00',
+        // dateProcessed: '00:00',
+      }),
+    };
+    fetch(`http://localhost:3004/order/${lastOrder.id}`, putMethod).then((response) => response.json().products).then((product) => console.log(product));
   };
 
   useEffect(() => {
     dataProduct();
+    theLastOrder();
   }, []);
 
   return (
@@ -41,7 +73,7 @@ function Order() {
         </button>
       </div>
       <div className="Products">
-        <Products products={products} typeFood={typeFood} addList={addList} />
+        <Products products={products} typeFood={typeFood} addList={addList} addOrder={addOrder} />
       </div>
       <section className="sectionOrders">
         <p className="nameTable">Orden Mesa 4</p>

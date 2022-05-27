@@ -6,10 +6,12 @@
 import './Products.css';
 
 // eslint-disable-next-line react/prop-types
-function Products({ products, typeFood, addList }) {
+function Products({
+  products, typeFood, addList, addOrder,
+}) {
   return (
     products ? products.filter((product) => product.type === typeFood).map((product) => (
-      <article onClick={() => { addList(product); }}>
+      <article onClick={() => { addList(product); addOrder(); }}>
         <p>{product.name}</p>
         <p>{product.price}</p>
       </article>

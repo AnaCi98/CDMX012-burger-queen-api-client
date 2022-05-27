@@ -17,7 +17,7 @@
       "dateEntry": "00/00/00"
     },
     {
-      "id": 1,
+      "id": 3,
       "name": "dish3",
       "price": "$00.00",
       "image": "URL",
@@ -25,7 +25,7 @@
       "dateEntry": "00/00/00"
     },
     {
-      "id": 3,
+      "id": 4,
       "name": "dish-breakfast4",
       "price": "$00.00",
       "image": "URL",
@@ -39,7 +39,7 @@
       "client": "client1",
       "userId": "idWaiter",
       "products": [
-        { 
+        {
           "product": {
             "qty": 0,
             "product": {}
@@ -49,6 +49,26 @@
       "status": "status",
       "dateEntry": "00/00/00",
       "dateProcessed": "00:00"
+    },
+    {
+      "id": 2,
+      "client": "Chuchita",
+      "userId": "idWaiter",
+      "status": "status",
+      "dateEntry": "00/00/00",
+      "dateProcessed": "00:00",
+      "products": [
+        {
+          "qty": 0,
+          "product": "dish",
+          "price": "$00.00"
+        },
+        {
+          "qty": 0,
+          "product": "dish3",
+          "price": "$00.00"
+        }
+      ]
     }
   ]
 }
