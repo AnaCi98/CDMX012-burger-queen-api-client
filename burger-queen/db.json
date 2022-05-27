@@ -39,7 +39,7 @@
       "client": "client1",
       "userId": "idWaiter",
       "products": [
-        { 
+        {
           "product": {
             "qty": 0,
             "product": {}
@@ -49,6 +49,64 @@
       "status": "status",
       "dateEntry": "00/00/00",
       "dateProcessed": "00:00"
+    },
+    {
+      "client": "Ana",
+      "userId": "Xos",
+      "products": [
+        {
+          "qty": 0,
+          "product": "dish",
+          "price": "$00.00"
+        },
+        {
+          "qty": 0,
+          "product": "dish3",
+          "price": "$00.00"
+        },
+        {
+          "qty": 0,
+          "product": "dish",
+          "price": "$00.00"
+        },
+        {
+          "qty": 0,
+          "product": "dish3",
+          "price": "$00.00"
+        }
+      ],
+      "status": "pending",
+      "dateEntry": [
+        13,
+        12,
+        46
+      ],
+      "dateProcessed": "00:00",
+      "id": 2
+    },
+    {
+      "client": "Chuchita",
+      "userId": "Xos",
+      "products": [
+        {
+          "qty": 0,
+          "product": "dish",
+          "price": "$00.00"
+        },
+        {
+          "qty": 0,
+          "product": "dish3",
+          "price": "$00.00"
+        }
+      ],
+      "status": "pending",
+      "dateEntry": [
+        13,
+        13,
+        46
+      ],
+      "dateProcessed": "00:00",
+      "id": 3
     }
   ]
 }

@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
@@ -8,27 +9,22 @@ import './Order.css';
 import Products from '../Products/Products';
 import dataProducts from '../data';
 
-function Order({ newClient }) {
+function Order({ newClient, activeName }) {
   // const [buttonStyle, setButtonStyle] = useState('typeFood');
   // const [pressButtonStyle, setPressButtonStyle] = useState('typeFood');
   const [listOrder, setListOrder] = useState([]);
-  const [lastOrder, setLastOrder] = useState();
+  // const [lastOrder, setLastOrder] = useState();
   const [products, setProducts] = useState();
   const [typeFood, setTypeFood] = useState('meal');
   const navigate = useNavigate();
 
+  // Obtener productos de la data
   const dataProduct = async () => {
     const allProducts = await dataProducts('products');
     setProducts(allProducts);
   };
 
-  const theLastOrder = async () => {
-    const allOrder = await dataProducts('order');
-    setLastOrder(allOrder[allOrder.length - 1]);
-    // setLastOrder(allOrder);
-    console.log(lastOrder);
-  };
-
+  // Para añadir productos
   const addList = (product) => {
     const productOrder = {
       qty: 0,
@@ -40,27 +36,29 @@ function Order({ newClient }) {
   };
 
   const addOrder = () => {
+    const date = new Date();
+    const [hour, minutes, seconds] = [date.getHours(), date.getMinutes(), date.getSeconds()];
+
     const putMethod = {
-      method: 'PATCH',
+      method: 'POST',
       headers: {
         'Content-type': 'application/json; charset=UTF-8',
       },
       body: JSON.stringify({
-        // id: lastOrder.id,
-        // client: 'NUEVOCLIENTE',
-        // userId: 'idWaiter',
+        client: newClient,
+        userId: activeName,
         products: listOrder,
-        // status: 'status',
-        // dateEntry: '00/00/00',
-        // dateProcessed: '00:00',
+        status: 'pending',
+        dateEntry: [hour, minutes, seconds],
+        dateProcessed: '00:00',
       }),
     };
-    fetch(`http://localhost:3004/order/${lastOrder.id}`, putMethod).then((response) => response.json().products).then((product) => console.log(product));
+    fetch('http://localhost:3004/order', putMethod).then((response) => response.json().products).then((product) => console.log(product));
   };
 
   useEffect(() => {
     dataProduct();
-    theLastOrder();
+    // theLastOrder();
   }, []);
 
   // useEffect(() => {
@@ -79,7 +77,7 @@ function Order({ newClient }) {
         </button>
       </div>
       <div className="Products">
-        <Products products={products} typeFood={typeFood} addList={addList} addOrder={addOrder} />
+        <Products products={products} typeFood={typeFood} addList={addList} />
       </div>
       <section className="sectionOrders">
         <p className="nameTable">
@@ -88,7 +86,7 @@ function Order({ newClient }) {
           {newClient}
         </p>
         {' '}
-        <img className="Send" alt="button to send order" src="../img/Send.png" />
+        <img onClick={() => { addOrder(); }} className="Send" alt="button to send order" src="../img/Send.png" />
         <p className="messageSend">Enviar a cocina</p>
       </section>
     </section>

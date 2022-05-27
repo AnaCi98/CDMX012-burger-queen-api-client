@@ -44,7 +44,7 @@ function Paths() {
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/waiter" element={<Waiter activeName={activeName} getClientName={getClientName} />} />
-          <Route path="/order" element={<Order newClient={newClient} />} />
+          <Route path="/order" element={<Order activeName={activeName} newClient={newClient} />} />
         </Routes>
       );
     case 'admin':
