@@ -1,4 +1,4 @@
-/* eslint-disable react/prop-types */
+/* eslint-disable no-unused-vars */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 // import { useState } from 'react';
@@ -9,28 +9,63 @@ import Products from '../Products/Products';
 import dataProducts from '../data';
 
 function Order({ newClient }) {
-//   const [buttonStyle, setButtonStyle] = useState('typeFood');
+  // const [buttonStyle, setButtonStyle] = useState('typeFood');
+  // const [pressButtonStyle, setPressButtonStyle] = useState('typeFood');
+  const [listOrder, setListOrder] = useState([]);
+  const [lastOrder, setLastOrder] = useState();
   const [products, setProducts] = useState();
   const [typeFood, setTypeFood] = useState('meal');
   const navigate = useNavigate();
 
-  console.log(newClient, 'en order');
   const dataProduct = async () => {
     const allProducts = await dataProducts('products');
     setProducts(allProducts);
   };
-  // .filter((food) => food.type === typeFood)
+
+  const theLastOrder = async () => {
+    const allOrder = await dataProducts('order');
+    setLastOrder(allOrder[allOrder.length - 1]);
+    // setLastOrder(allOrder);
+    console.log(lastOrder);
+  };
+
+  const addList = (product) => {
+    const productOrder = {
+      qty: 0,
+      product: product.name,
+      price: product.price,
+    };
+    setListOrder([...listOrder, productOrder]);
+    console.log(listOrder);
+  };
+
+  const addOrder = () => {
+    const putMethod = {
+      method: 'PATCH',
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+      body: JSON.stringify({
+        // id: lastOrder.id,
+        // client: 'NUEVOCLIENTE',
+        // userId: 'idWaiter',
+        products: listOrder,
+        // status: 'status',
+        // dateEntry: '00/00/00',
+        // dateProcessed: '00:00',
+      }),
+    };
+    fetch(`http://localhost:3004/order/${lastOrder.id}`, putMethod).then((response) => response.json().products).then((product) => console.log(product));
+  };
+
   useEffect(() => {
     dataProduct();
+    theLastOrder();
   }, []);
 
-  // const typeFood = () => {
-  //   products.forEach((product) => {
-  //     if (product.type) {
-  //       setProducts(product);
-  //     }
-  //   });
-  // };
+  // useEffect(() => {
+  //   addOrder();
+  // }, [listOrder]);
 
   return (
     <section className="allMenu">
@@ -44,17 +79,18 @@ function Order({ newClient }) {
         </button>
       </div>
       <div className="Products">
-        <Products products={products} typeFood={typeFood} />
+        <Products products={products} typeFood={typeFood} addList={addList} addOrder={addOrder} />
       </div>
-      <aside className="sectionOrders">
+      <section className="sectionOrders">
         <p className="nameTable">
           Orden
           {' '}
           {newClient}
         </p>
+        {' '}
         <img className="Send" alt="button to send order" src="../img/Send.png" />
         <p className="messageSend">Enviar a cocina</p>
-      </aside>
+      </section>
     </section>
   );
 }

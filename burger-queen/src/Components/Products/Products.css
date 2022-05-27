@@ -1,6 +1,6 @@
 
 article{
-    width: 22vh;
+    width: 100%;
     background-color: #FFF8D9;
     height: 10vh;
     border-radius: 12px;
@@ -20,7 +20,7 @@ article p{
 }
     @media screen and (orientation: landscape) {
         article{
-            width: 28vh;
+            width: 100%;
             background-color: #FFF8D9;
             height: 14vh;
             border-radius: 12px;
