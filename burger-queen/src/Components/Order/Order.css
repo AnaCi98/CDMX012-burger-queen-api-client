@@ -13,8 +13,8 @@
     border-bottom-left-radius: 12px;
     box-shadow: -4px 4px 4px rgb(0, 0, 0, 0.25);
     display: flex;
-    justify-content: center;
-    justify-self: flex-end;
+    flex-direction: column;
+
 }
 .options{
     position: absolute;
@@ -73,15 +73,11 @@
     font-size: 1.2rem;
 }
 .nameTable{
-    position: relative;
-    right: 20%;
+
     font-family: 'Cookie', cursive;
     font-size: 2.2rem;
 }
-.numberTable{
-    font-size: 2rem;
-    font-family: 'Cookie', cursive;
-}
+
 
 @media screen and (orientation: landscape) {
     .allMenu{
@@ -92,23 +88,21 @@
     background-color: #EBA83A;
     width: 34%;
     height: 100vh;
-    position: absolute;
     right: 0;
-    top: 0;
     border-top-left-radius: 12px;
     border-bottom-left-radius: 12px;
     box-shadow: -4px 4px 4px rgb(0, 0, 0, 0.25);
     display: flex;
-    justify-content: center;
-}
-.numberTable{
-    font-size: 2rem;
-    font-family: 'Cookie', cursive;
+    flex-direction: column;
 }
 .nameTable{
+
     font-family: 'Cookie', cursive;
-    font-size: 2.2rem;
+    font-size: 2rem;
+    align-self: center;
+
 }
+
 .options{
     position: absolute;
     top: 10%;
@@ -162,5 +156,32 @@
     bottom: 0%;
     right: 9%;
 }
+.infoProducts{
+    font-family: Belleza;
+    font-size: 1.3rem;
+    display: flex;
+    column-gap: 5%;
+align-items: center;
+justify-content: center;    
+}
+.infoProducts p:first-child {
+    position: relative;
+    right: 8%;
+    max-width: 50px;
+    align-self: center;
+}
+.infoProducts button{
+    width: 6vh;
+    height: 6vh;
+    background-color: #FFE260;
+    border: 1px solid black;
+    font-weight: bold;
+    font-size: 1.6rem;
+}
+/* .listProducts{
+    display: flex;
+    flex-direction: column;
+    align-items: ;
+} */
 
 }

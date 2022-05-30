@@ -1,0 +1,53 @@
+@media screen and (orientation: landscape) {
+
+.OrderSummary{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+align-items: center;
+    top: 20%;
+    left: 12%;
+    background-color: #FFF8D9;
+    width: 100vh;
+    height: 60vh;
+    z-index: 10;
+    box-shadow: -4px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 12px;
+}
+.OrderSummary p:first-child{
+    font-family: 'Cookie', cursive;
+    font-size: 2.2rem;
+    margin-top: 3%;
+}
+table{
+    margin-top: -4%;
+    border: 2px solid rgba(0, 0, 0, 0.153);
+    font-family: 'Belleza', cursive;
+    border-spacing: 10vh 2vh;
+    text-align: center;
+}
+th{
+    font-size: 1.2rem;
+}
+td{
+    font-size: 1.2rem;
+}
+.OrderSummary button{
+    position: relative;
+    top: 3%;
+    left: 33%;
+    width: 22vh;
+    height: 6vh;
+    box-shadow: -4px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 12px;
+    font-size: 1.2rem;
+}
+.BackOrder{
+    position: relative;
+    margin-top:18%;
+    left: 15%;
+    z-index: 20;
+    width: 7vh;
+}
+
+}
