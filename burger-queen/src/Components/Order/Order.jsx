@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import './Order.css';
 import Products from '../Products/Products';
-import dataProducts from '../data';
+import { dataProducts } from '../data';
 import listProducts from '../Helpers';
 import OrderSummary from './OrderSummary';
 
