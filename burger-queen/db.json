@@ -3,7 +3,7 @@
     {
       "id": 1,
       "name": "dish",
-      "price": "$00.00",
+      "price": "$80.00",
       "image": "URL",
       "type": "meal",
       "dateEntry": "00/00/00"
@@ -11,7 +11,7 @@
     {
       "id": 2,
       "name": "dish-breakfast",
-      "price": "$00.00",
+      "price": "$50.00",
       "image": "URL",
       "type": "breakfast",
       "dateEntry": "00/00/00"
@@ -19,7 +19,7 @@
     {
       "id": 1,
       "name": "dish3",
-      "price": "$00.00",
+      "price": "$80.00",
       "image": "URL",
       "type": "meal",
       "dateEntry": "00/00/00"
@@ -27,7 +27,7 @@
     {
       "id": 2,
       "name": "dish-breakfast4",
-      "price": "$00.00",
+      "price": "$90.00",
       "image": "URL",
       "type": "breakfast",
       "dateEntry": "00/00/00"
