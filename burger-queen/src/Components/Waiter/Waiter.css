@@ -1,32 +1,47 @@
 .Waiter{
     background-color: #D5DBB3;
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
     margin: 0;
     padding: 0;
+    grid-template-columns: 2;
+}
+.Waiter-main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 90vw;
+}
+.Waiter-welcome{
+    margin: 0;
+    justify-self: flex-start;
+    font-family: 'Belleza', sans-serif;
+    font-size: 40px;
+    margin-bottom: 5vh;
 }
 
 .Clients-section{
-    width: 50vw;
-    height: 10vh;
+    width: 80vw;
+    height: 80vh;
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-right: 15%;
 }
 
 .Clients-orders-section{
-    font-family: 'Belleza', sans-serif;
-    font-size: 40px;
-    margin: 20px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
 }
 .Clients-title{
+    width: 40vw;
+    height: 10vh;
     background-color: #FFF8D9;
     border-radius: 12px;
-    width: 433px;
-    height: 60px;
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -46,19 +61,11 @@
     margin-right: 2%;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
-.Clients-names {
-    background-color: #FFF8D9;
-    width: 200px;
-    height: 70px;
-    border: none;
-    border-radius: 12px;
-    margin: 10px;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
 
 .Nav-right{
+    justify-self:end;
     height: 100vh;
-    width: 20vw;
+    width: 10vw;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;

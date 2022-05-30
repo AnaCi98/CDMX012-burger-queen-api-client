@@ -23,6 +23,5 @@ export const getRole = async (activeUser) => {
       }
     });
   });
-  console.log(document);
   return document;
 };
