@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react';
 import './Order.css';
 import Products from '../Products/Products';
 import dataProducts from '../data';
-import listProducts from '../Helpers';
+import { listProducts, deleteOne, addOne } from '../Helpers';
 import OrderSummary from './OrderSummary';
 
 function Order({ newClient, activeName }) {
@@ -34,25 +34,12 @@ function Order({ newClient, activeName }) {
 
   // Eliminar un producto
   const deleteProduct = (food) => {
-    let index;
-    const newArray = listOrder;
-    newArray.forEach((element) => {
-      if (element.name === food.product) {
-        index = newArray.indexOf(element);
-      }
-    });
-    newArray.splice(index, 1);
-    setListOrder([...newArray]);
+    setListOrder([...deleteOne(food, listOrder)]);
   };
 
   // Agregar un producto
   const addProduct = (food) => {
-    const newArray = listOrder;
-    newArray.forEach((element) => {
-      if (element.name === food.product) {
-        setListOrder([...newArray, element]);
-      }
-    });
+    setListOrder([...addOne(food, listOrder)]);
   };
 
   const addOrder = () => {
