@@ -40,13 +40,12 @@
       "userId": "idWaiter",
       "products": [
         {
-          "product": {
-            "qty": 0,
-            "product": {}
-          }
+          "qty": 0,
+          "product": "dish",
+          "price": "$00.00"
         }
       ],
-      "status": "status",
+      "status": "pending",
       "dateEntry": "00/00/00",
       "dateProcessed": "00:00"
     },
@@ -75,7 +74,7 @@
           "price": "$00.00"
         }
       ],
-      "status": "pending",
+      "status": "delivered",
       "dateEntry": [
         13,
         12,
@@ -99,13 +98,17 @@
           "price": "$00.00"
         }
       ],
-      "status": "pending",
+      "status": "delivered",
       "dateEntry": [
         13,
         13,
         46
       ],
-      "dateProcessed": "00:00",
+      "dateProcessed": [
+        13,
+        20,
+        50
+      ],
       "id": 3
     },
     {

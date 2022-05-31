@@ -2,8 +2,9 @@
 import './Waiter.css';
 import { useState, useEffect } from 'react';
 import ModalNewClient from '../ModalNewClient/ModalNewClient';
-import dataProducts from '../data';
+import { dataProducts } from '../data';
 import ClientsButtons from '../ClientsButtons/ClientsButtons';
+import WaiterRightBar from './WaiterRightBar';
 
 // eslint-disable-next-line react/prop-types
 function Waiter({ activeName, getClientName }) {
@@ -45,13 +46,9 @@ function Waiter({ activeName, getClientName }) {
           </section>
         </object>
       </section>
-      <aside className="Nav-right">
-        <section className="Notifications">
-          <img className="Bell-icon" alt="bell icon" src="../img/BellIcon.png" />
-          <p className="Notifications-Text" />
-        </section>
-        <button className="End-session" id="EndSession" type="button">Fin de Turno</button>
-      </aside>
+      <section>
+        <WaiterRightBar orders={orders} />
+      </section>
     </div>
   );
 }

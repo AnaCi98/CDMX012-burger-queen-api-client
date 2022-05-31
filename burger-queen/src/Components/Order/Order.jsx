@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import './Order.css';
 import Products from '../Products/Products';
-import dataProducts from '../data';
+import { dataProducts } from '../data';
 import { listProducts, deleteOne, addOne } from '../Helpers';
 import OrderSummary from './OrderSummary';
 
@@ -14,6 +14,7 @@ function Order({ newClient, activeName }) {
   // const [buttonStyle, setButtonStyle] = useState('typeFood');
   // const [pressButtonStyle, setPressButtonStyle] = useState('typeFood');
   // const [total, setTotal] = useState();
+  const view = useState(true);
   const [summary, setSummary] = useState(false);
   const [structureList, setStructure] = useState();
   const [listOrder, setListOrder] = useState([]);
@@ -87,6 +88,7 @@ function Order({ newClient, activeName }) {
         addOrder={addOrder}
         summary={summary}
         closeSummary={closeSummary}
+        view={view}
         // total={total}
       />
       <img onClick={() => { navigate('/waiter'); }} className="Back" alt="button to return" src="../img/Back.png" />
