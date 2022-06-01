@@ -159,16 +159,18 @@
 .infoProducts{
     font-family: Belleza;
     font-size: 1.3rem;
-    display: flex;
-    column-gap: 5%;
+    display: grid;
+    grid-template-columns: 135px 80px 50px 80px;
 align-items: center;
 justify-content: center;    
+margin-left: 10%;
 }
 .infoProducts p:first-child {
     position: relative;
     right: 8%;
     max-width: 50px;
     align-self: center;
+    text-align: center;
 }
 .infoProducts button{
     width: 6vh;
