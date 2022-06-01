@@ -13,8 +13,8 @@ function OrderSummary({
   if (summary) {
     return (
       <section>
-        <img onClick={() => { closeSummary(); }} className="BackOrder" alt="button to return" src="../img/Back.png" />
         <section className="OrderSummary">
+          <img onClick={() => { closeSummary(); }} className="BackOrder" alt="button to return" src="../img/Back.png" />
           <p>Resumen de la orden</p>
           <table>
             <tbody>
@@ -27,7 +27,7 @@ function OrderSummary({
                 <tr>
                   <td>{product.product}</td>
                   <td>{product.qty}</td>
-                  <td>{product.price}</td>
+                  <td>{(product.price) * product.qty}</td>
                 </tr>
               )) : null}
               <tr>

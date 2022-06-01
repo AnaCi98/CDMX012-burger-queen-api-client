@@ -3,7 +3,7 @@
     {
       "id": 1,
       "name": "dish",
-      "price": "$80.00",
+      "price": "80.00",
       "image": "URL",
       "type": "meal",
       "dateEntry": "00/00/00"
@@ -11,7 +11,7 @@
     {
       "id": 2,
       "name": "dish-breakfast",
-      "price": "$50.00",
+      "price": "50.00",
       "image": "URL",
       "type": "breakfast",
       "dateEntry": "00/00/00"
@@ -19,7 +19,7 @@
     {
       "id": 1,
       "name": "dish3",
-      "price": "$80.00",
+      "price": "80.00",
       "image": "URL",
       "type": "meal",
       "dateEntry": "00/00/00"
@@ -27,7 +27,7 @@
     {
       "id": 2,
       "name": "dish-breakfast4",
-      "price": "$90.00",
+      "price": "90.00",
       "image": "URL",
       "type": "breakfast",
       "dateEntry": "00/00/00"
@@ -42,7 +42,7 @@
         {
           "qty": 0,
           "product": "dish",
-          "price": "$00.00"
+          "price": "00.00"
         }
       ],
       "status": "pending",
@@ -56,22 +56,22 @@
         {
           "qty": 0,
           "product": "dish",
-          "price": "$00.00"
+          "price": "00.00"
         },
         {
           "qty": 0,
           "product": "dish3",
-          "price": "$00.00"
+          "price": "00.00"
         },
         {
           "qty": 0,
           "product": "dish",
-          "price": "$00.00"
+          "price": "00.00"
         },
         {
           "qty": 0,
           "product": "dish3",
-          "price": "$00.00"
+          "price": "00.00"
         }
       ],
       "status": "delivered",
@@ -90,12 +90,12 @@
         {
           "qty": 0,
           "product": "dish",
-          "price": "$00.00"
+          "price": "00.00"
         },
         {
           "qty": 0,
           "product": "dish3",
-          "price": "$00.00"
+          "price": "00.00"
         }
       ],
       "status": "delivered",
@@ -117,12 +117,12 @@
         {
           "qty": 0,
           "product": "dish",
-          "price": "$00.00"
+          "price": "00.00"
         },
         {
           "qty": 0,
           "product": "dish3",
-          "price": "$00.00"
+          "price": "00.00"
         }
       ],
       "status": "pending",
@@ -141,7 +141,7 @@
         {
           "qty": 0,
           "product": "dish",
-          "price": "$00.00"
+          "price": "00.00"
         }
       ],
       "status": "pending",
@@ -160,7 +160,7 @@
         {
           "qty": 0,
           "product": "dish",
-          "price": "$00.00"
+          "price": "00.00"
         }
       ],
       "status": "pending",
@@ -179,22 +179,22 @@
         {
           "qty": 1,
           "product": "dish3",
-          "price": "$80.00"
+          "price": "80.00"
         },
         {
           "qty": 1,
           "product": "dish",
-          "price": "$80.00"
+          "price": "80.00"
         },
         {
           "qty": 1,
           "product": "dish-breakfast",
-          "price": "$50.00"
+          "price": "50.00"
         },
         {
           "qty": 1,
           "product": "dish-breakfast4",
-          "price": "$90.00"
+          "price": "90.00"
         }
       ],
       "status": "pending",
@@ -205,6 +205,59 @@
       ],
       "dateProcessed": "00:00",
       "id": 7
+    },
+    {
+      "client": "yomero",
+      "userId": "Xos",
+      "products": [
+        {
+          "qty": 1,
+          "product": "dish",
+          "price": "80.00"
+        },
+        {
+          "qty": 1,
+          "product": "dish3",
+          "price": "80.00"
+        },
+        {
+          "qty": 1,
+          "product": "dish-breakfast",
+          "price": "50.00"
+        }
+      ],
+      "status": "pending",
+      "dateEntry": [
+        20,
+        28,
+        51
+      ],
+      "dateProcessed": "00:00",
+      "id": 8
+    },
+    {
+      "client": "aquiando",
+      "userId": "Xos",
+      "products": [
+        {
+          "qty": 2,
+          "product": "dish3",
+          "price": "80.00"
+        },
+        {
+          "qty": 2,
+          "product": "dish",
+          "price": "80.00"
+        }
+      ],
+      "status": "pending",
+      "dateEntry": [
+        21,
+        6,
+        28
+      ],
+      "dateProcessed": "00:00",
+      "id": 9
     }
   ]
 }

@@ -34,10 +34,12 @@
 
 .Clients-orders-section{
     display: flex;
+    justify-content: space-around;
     align-items: center;
     flex-wrap: wrap;
 }
 .Clients-title{
+    margin-bottom: 50px;
     width: 40vw;
     height: 10vh;
     background-color: #FFF8D9;
