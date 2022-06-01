@@ -13,7 +13,11 @@ function Products({
     products ? products.filter((product) => product.type === typeFood).map((product) => (
       <article onClick={() => { addList(product); }}>
         <p>{product.name}</p>
-        <p>{product.price}</p>
+        <p>
+          $
+          {' '}
+          {product.price}
+        </p>
       </article>
     )) : null
   );

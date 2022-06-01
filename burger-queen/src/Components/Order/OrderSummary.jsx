@@ -10,6 +10,12 @@ function OrderSummary({
 }) {
   const navigate = useNavigate();
 
+  const totalOrder = (list) => {
+    const array = list.map((product) => (parseInt(product.price, 10)) * product.qty);
+    const total = array.reduce((a, b) => a + b, 0);
+    return total;
+  };
+
   if (summary) {
     return (
       <section>
@@ -27,13 +33,22 @@ function OrderSummary({
                 <tr>
                   <td>{product.product}</td>
                   <td>{product.qty}</td>
-                  <td>{(product.price) * product.qty}</td>
+                  <td>
+                    $
+                    {' '}
+                    {(product.price) * product.qty}
+                  </td>
                 </tr>
               )) : null}
               <tr>
                 <td> </td>
                 <td>Total</td>
-                <td> Suma</td>
+                <td>
+                  $
+                  {' '}
+                  {totalOrder(structureList)}
+                  {' '}
+                </td>
               </tr>
             </tbody>
           </table>

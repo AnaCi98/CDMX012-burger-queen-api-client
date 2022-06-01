@@ -68,8 +68,17 @@
         width: 90%;
     }
     .Notification-client{
+        font-family: Belleza;
         font-size: large;
         color: black;
+        font-weight: bold;
+        margin-bottom: 0;
+    }
+    .Notification-client-date{
+        margin-top: 0;
+        font-family: Belleza;
+        font-size: large;
+        color: #C32300;
     }
     .End-session {
         font-family: 'Cookie', cursive;

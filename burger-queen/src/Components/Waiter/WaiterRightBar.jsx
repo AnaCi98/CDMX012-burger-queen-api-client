@@ -17,7 +17,9 @@ export default function WaiterRightBar({ orders }) {
           <>
             <p className="Notification-client" onClick={() => handleClickNotification(order.id)}>{order.client}</p>
             <p className="Notification-client-date">
-              {order.dateProcessed}
+              {order.dateProcessed[0]}
+              :
+              {order.dateProcessed[1]}
               {' '}
             </p>
           </>
