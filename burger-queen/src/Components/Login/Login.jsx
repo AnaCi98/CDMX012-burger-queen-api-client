@@ -15,7 +15,7 @@ function Login() {
   const handleSignInClick = (userMail, userPassword) => {
     // eslint-disable-next-line no-unused-vars
     signIn(userMail, userPassword).then((userCredential) => {
-      navigate('/waiter');
+      navigate('/kitchen');
     }).catch((error) => {
       console.log(error.code);
       switch (error.code) {

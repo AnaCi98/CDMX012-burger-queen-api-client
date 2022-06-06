@@ -1,0 +1,27 @@
+.kitchen-order{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 60vw;
+}
+
+.order-postit{
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-weight: bold;
+    font-family: Belleza;
+    height: 11.5vh;
+    width: 6.9vw;
+    background-image: url('../../../../public/img/postit.png');
+    background-size:cover;
+}
+
+.order-date-entry{
+    margin: 0;
+    color: #C32300;
+    font-weight: bold;
+}

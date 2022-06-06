@@ -8,6 +8,7 @@ import { onAuthStateChanged } from '../Firebase/firebaseApp';
 import { auth } from '../Firebase/firebaseAuth';
 import { getRole } from '../Firebase/firebaseFirestore';
 import Admin from './Admin/Admin';
+import Kitchen from './Kitchen/Kitchen';
 
 function Paths() {
   const [activeRole, setActiveRole] = useState(null);
@@ -45,6 +46,13 @@ function Paths() {
           <Route path="/" element={<Login />} />
           <Route path="/waiter" element={<Waiter activeName={activeName} getClientName={getClientName} />} />
           <Route path="/order" element={<Order activeName={activeName} newClient={newClient} />} />
+        </Routes>
+      );
+    case 'cocina':
+      return (
+        <Routes>
+          <Route path="/" element={<Login />} />
+          <Route path="/kitchen" element={<Kitchen activeName={activeName} />} />
         </Routes>
       );
     case 'admin':

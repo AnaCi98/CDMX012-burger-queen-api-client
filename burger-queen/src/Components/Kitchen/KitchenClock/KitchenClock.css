@@ -1,0 +1,14 @@
+.clock-box{
+    padding: 5vw;
+    border-left-style: solid;
+    border-left-width: 1px;
+    border-left-color: #C32300;
+
+}
+
+.kitchen-clock{
+    background-color: #FFE260;
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+}

@@ -1,5 +1,5 @@
 
-article{
+.product-article{
     width: 100%;
     background-color: #FFF8D9;
     height: 10vh;
@@ -15,11 +15,11 @@ article{
     text-align: center;
 
 }
-article p{
+.product-name{
     margin: 2%;
 }
     @media screen and (orientation: landscape) {
-        article{
+        .product-article{
             width: 100%;
             background-color: #FFF8D9;
             height: 14vh;
@@ -31,7 +31,7 @@ article p{
             align-items: center;
             padding: 0;    
         }
-        article p{
+        .product-name{
             margin: 2%;
             font-family: Belleza;
             /* font-weight: bold; */

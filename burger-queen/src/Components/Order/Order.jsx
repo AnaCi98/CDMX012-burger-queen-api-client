@@ -61,7 +61,7 @@ function Order({ newClient, activeName }) {
         dateProcessed: '00:00',
       }),
     };
-    fetch('http://localhost:3004/order', putMethod).then((response) => response.json().products).then((product) => console.log(product));
+    fetch('https://629d281fc6ef9335c0998121.mockapi.io/order', putMethod).then((response) => response.json().products).then((product) => console.log(product));
   };
 
   // Cerrar resumen de la orden

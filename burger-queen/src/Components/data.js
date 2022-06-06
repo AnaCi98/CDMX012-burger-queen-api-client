@@ -1,5 +1,5 @@
 export const dataProducts = async (route) => {
-  const allProducts = await fetch(`http://localhost:3004/${route}`).then((response) => response.json()).then((products) => products);
+  const allProducts = await fetch(`https://629d281fc6ef9335c0998121.mockapi.io/${route}`).then((response) => response.json()).then((products) => products);
   return allProducts;
 };
 /* const getOrder = async () => {
@@ -10,7 +10,7 @@ export const dataProducts = async (route) => {
 getOrder(); */
 export const changeState = (id) => {
   const putMethod = {
-    method: 'PATCH', // Method itself
+    method: 'PUT', // Method itself
     headers: {
       'Content-type': 'application/json; charset=UTF-8', // Indicates the content
     },
@@ -24,5 +24,5 @@ export const changeState = (id) => {
       // dateProcessed: '00:00',
     }),
   };
-  fetch(`http://localhost:3004/order/${id}`, putMethod).then((response) => response.json().products).then((product) => console.log(product));
+  fetch(`https://629d281fc6ef9335c0998121.mockapi.io/order/${id}`, putMethod).then((response) => response.json().products).then((product) => console.log(product));
 };

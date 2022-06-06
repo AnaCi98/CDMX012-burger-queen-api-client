@@ -1,0 +1,30 @@
+.kitchen-topbar {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    height: 50vh;
+    width: 100vw;
+    background-color: #FFF8D9;
+    box-shadow: -4px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.orders-side{
+    justify-self: flex-end;
+    width: 70%;
+    flex-direction: column;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.clients-title {
+    font-family: Cookie;
+    font-size:xx-large;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
