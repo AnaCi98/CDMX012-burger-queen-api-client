@@ -47,7 +47,7 @@ function Waiter({ activeName, getClientName }) {
         </object>
       </section>
       <section>
-        <WaiterRightBar orders={orders} />
+        <WaiterRightBar orders={orders} dataOrders={dataOrders} />
       </section>
     </div>
   );

@@ -4,11 +4,12 @@
 import './WaiterRightBar.css';
 import { changeState } from '../data';
 
-export default function WaiterRightBar({ orders }) {
+export default function WaiterRightBar({ orders, dataOrders }) {
   const handleClickNotification = (orderId) => {
-    changeState(orderId);
+    changeState(orderId).then((products) => { dataOrders(); console.log(products); });
     console.log(orderId);
   };
+
   return (
     <aside className="Nav-right">
       <section className="Notifications">

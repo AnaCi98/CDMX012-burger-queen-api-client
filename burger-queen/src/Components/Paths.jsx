@@ -8,6 +8,8 @@ import { onAuthStateChanged } from '../Firebase/firebaseApp';
 import { auth } from '../Firebase/firebaseAuth';
 import { getRole } from '../Firebase/firebaseFirestore';
 import Admin from './Admin/Admin';
+import Stocktaking from './Admin/Stocktaking';
+import Workers from './Admin/Workers';
 
 function Paths() {
   const [activeRole, setActiveRole] = useState(null);
@@ -52,6 +54,8 @@ function Paths() {
       return (
         <Routes>
           <Route path="/admin" element={<Admin />} />
+          <Route path="/workers" element={<Workers />} />
+          <Route path="/products" element={<Stocktaking />} />
         </Routes>
       );
       // <h1>ADMIN en construcción</h1>;

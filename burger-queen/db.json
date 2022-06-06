@@ -59,7 +59,7 @@
           "price": "90.00"
         }
       ],
-      "status": "delivering",
+      "status": "delivered",
       "dateEntry": [
         10,
         32,
@@ -146,7 +146,7 @@
           "price": "90.00"
         }
       ],
-      "status": "delivering",
+      "status": "delivered",
       "dateEntry": [
         23,
         53,

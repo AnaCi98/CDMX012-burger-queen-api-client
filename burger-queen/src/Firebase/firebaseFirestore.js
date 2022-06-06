@@ -1,7 +1,7 @@
 /* eslint-disable import/prefer-default-export */
 /* eslint-disable no-console */
 import {
-  collection, getFirestore, getDocs,
+  collection, getFirestore, getDocs, onSnapshot, query,
 } from 'firebase/firestore';
 import { app } from './firebaseApp';
 
@@ -24,4 +24,15 @@ export const getRole = async (activeUser) => {
     });
   });
   return document;
+};
+
+export const getWorkers = () => {
+  const arrayWorkers = [];
+  const q = query(collection(db, 'Empleadxs'));
+  onSnapshot(q, (querySnapshot) => {
+    querySnapshot.forEach((docs) => {
+      arrayWorkers.push({ ...docs.data(), id: docs.id });
+    });
+  });
+  return arrayWorkers;
 };

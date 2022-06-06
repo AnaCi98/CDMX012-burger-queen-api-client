@@ -22,7 +22,7 @@ function OrderSummary({
         <section className="OrderSummary">
           <img onClick={() => { closeSummary(); }} className="BackOrder" alt="button to return" src="../img/Back.png" />
           <p>Resumen de la orden</p>
-          <table>
+          <table className="tableSummary">
             <tbody>
               <tr>
                 <th>Producto</th>
