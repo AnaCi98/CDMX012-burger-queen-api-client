@@ -24,5 +24,9 @@ export const changeState = (id) => {
       // dateProcessed: '00:00',
     }),
   };
+<<<<<<< HEAD
   fetch(`https://629d281fc6ef9335c0998121.mockapi.io/order/${id}`, putMethod).then((response) => response.json().products).then((product) => console.log(product));
+=======
+  return fetch(`https://629d281fc6ef9335c0998121.mockapi.io/order/${id}`, putMethod).then((response) => response.json().products);
+>>>>>>> 20d19eb8ec1e1b78232a2d547b90fb4648da9b96
 };

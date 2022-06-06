@@ -5,9 +5,14 @@
 import './WaiterRightBar.css';
 import { changeState } from '../data';
 
-export default function WaiterRightBar({ orders }) {
+export default function WaiterRightBar({ orders, dataOrders }) {
   const handleClickNotification = (orderId) => {
+<<<<<<< HEAD
     changeState(orderId);
+=======
+    changeState(orderId).then((products) => { dataOrders(); console.log(products); });
+    console.log(orderId);
+>>>>>>> 20d19eb8ec1e1b78232a2d547b90fb4648da9b96
   };
 
   return (
