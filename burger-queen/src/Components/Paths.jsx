@@ -8,12 +8,9 @@ import { onAuthStateChanged } from '../Firebase/firebaseApp';
 import { auth } from '../Firebase/firebaseAuth';
 import { getRole } from '../Firebase/firebaseFirestore';
 import Admin from './Admin/Admin';
-<<<<<<< HEAD
 import Kitchen from './Kitchen/Kitchen';
-=======
 import Stocktaking from './Admin/Stocktaking';
 import Workers from './Admin/Workers';
->>>>>>> 20d19eb8ec1e1b78232a2d547b90fb4648da9b96
 
 function Paths() {
   const [activeRole, setActiveRole] = useState(null);
