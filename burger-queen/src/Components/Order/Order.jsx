@@ -43,6 +43,23 @@ function Order({ newClient, activeName }) {
     setListOrder([...addOne(food, listOrder)]);
   };
 
+  // Cerrar resumen de la orden
+  const closeSummary = () => {
+    setSummary(false);
+  };
+  // Suma del total de productos
+  // const amount = () => {
+  //   const amountTotal = 0;
+  //   structureList.
+  // }
+  useEffect(() => {
+    dataProduct();
+  }, []);
+
+  useEffect(() => {
+    setStructure(listProducts(listOrder));
+  }, [listOrder]);
+
   const addOrder = () => {
     const date = new Date();
     const [hour, minutes, seconds] = [date.getHours(), date.getMinutes(), date.getSeconds()];
@@ -64,23 +81,6 @@ function Order({ newClient, activeName }) {
     fetch('https://629d281fc6ef9335c0998121.mockapi.io/order', putMethod).then((response) => response.json().products).then((product) => console.log(product));
   };
 
-  // Cerrar resumen de la orden
-  const closeSummary = () => {
-    setSummary(false);
-  };
-  // Suma del total de productos
-  // const amount = () => {
-  //   const amountTotal = 0;
-  //   structureList.
-  // }
-  useEffect(() => {
-    dataProduct();
-  }, []);
-
-  useEffect(() => {
-    setStructure(listProducts(listOrder));
-  }, [listOrder]);
-
   return (
     <section className="allMenu">
       <OrderSummary
@@ -89,7 +89,7 @@ function Order({ newClient, activeName }) {
         summary={summary}
         closeSummary={closeSummary}
         view={view}
-        // total={total}
+        confirmation="Enviar"
       />
       <img onClick={() => { navigate('/'); }} className="Back" alt="button to return" src="../img/Back.png" />
       <div className="options">

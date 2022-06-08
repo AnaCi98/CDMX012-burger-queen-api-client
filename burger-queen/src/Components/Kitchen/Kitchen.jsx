@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import './Kitchen.css';
 import KitchenClock from './KitchenClock/KitchenClock';
 import KitchenOrders from './KitchenOrders/KitchenOrders';
-import KitchenProducts from './KitchenProducts/KitchenProducts';
+// import KitchenProducts from './KitchenProducts/KitchenProducts';
 import { dataProducts } from '../data';
 
 // eslint-disable-next-line react/prop-types
@@ -22,6 +22,11 @@ function Kitchen({ activeName, getOutSession }) {
     getOutSession();
   };
 
+  /*   const productsAbstract = () => {
+    console.log(orders.products);
+  };
+  productsAbstract(); */
+
   console.log(activeName);
   return (
     <>
@@ -36,11 +41,9 @@ function Kitchen({ activeName, getOutSession }) {
         </article>
         <KitchenClock />
       </section>
-      <section>
-        <p>Detalles de productos</p>
-        <KitchenProducts orders={orders} />
+      <section className="kitchen-down">
+        <button type="button" className="End-session" onClick={() => handleSignOutClick()}>Fin de turno</button>
       </section>
-      <button type="button" className="exit-button" onClick={() => handleSignOutClick()}>Salir de turno</button>
     </>
   );
 }

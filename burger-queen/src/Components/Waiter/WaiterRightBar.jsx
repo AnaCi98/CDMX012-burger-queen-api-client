@@ -16,7 +16,7 @@ export default function WaiterRightBar({ orders, dataOrders, getOutSession }) {
       <section className="Notifications">
         <img className="Bell-icon" alt="bell icon" src="../img/BellIcon.png" />
         {orders ? orders.filter((order) => (order.status === 'delivering')).map((order) => (
-          <object key={order.id}>
+          <object key={order.id} className="Notification-object">
             <p className="Notification-client" onClick={() => handleClickNotification(order.id)}>{order.client}</p>
             <p className="Notification-client-date">
               {order.dateProcessed[0]}

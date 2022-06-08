@@ -9,6 +9,7 @@ function ClientsButton({ orders }) {
   const [openSummary, setOpenSummary] = useState(false);
 
   const handleClickOrder = (order) => {
+    console.log(order);
     setCurrentOrder(order.products);
     setOpenSummary(true);
   };
@@ -23,7 +24,7 @@ function ClientsButton({ orders }) {
         closeSummary={closeSummary}
         view={false}
       />
-      {orders ? orders.map((order) => (
+      {orders ? orders.filter((order) => (order.status === 'pending' || order.status === 'delivering')).map((order) => (
         <button type="button" className="Client-button" key={order.id} id={order.id} onClick={() => handleClickOrder(order)}>
           <p>{order.client}</p>
         </button>
