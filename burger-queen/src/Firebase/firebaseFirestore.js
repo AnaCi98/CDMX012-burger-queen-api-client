@@ -1,7 +1,7 @@
 /* eslint-disable import/prefer-default-export */
 /* eslint-disable no-console */
 import {
-  collection, getFirestore, getDocs, onSnapshot, query,
+  collection, getFirestore, getDocs, onSnapshot, query, doc, setDoc,
 } from 'firebase/firestore';
 import { app } from './firebaseApp';
 
@@ -11,14 +11,14 @@ const empleadxs = collection(db, 'Empleadxs');
 export const getRole = async (activeUser) => {
   let document = '';
   await getDocs(empleadxs).then((docs) => {
-    docs.forEach((doc) => {
-      if (doc.id === activeUser) {
+    docs.forEach((docc) => {
+      if (docc.id === activeUser) {
         // const newRole = (doc.data().rol).toString();
         // console.log(newRole);
         document = {
-          ...doc,
-          rol: doc.data().rol,
-          name: doc.data().nombre,
+          ...docc,
+          rol: docc.data().rol,
+          name: docc.data().nombre,
         };
       }
     });
@@ -31,8 +31,18 @@ export const getWorkers = () => {
   const q = query(collection(db, 'Empleadxs'));
   onSnapshot(q, (querySnapshot) => {
     querySnapshot.forEach((docs) => {
+      console.log(docs.data());
       arrayWorkers.push({ ...docs.data(), id: docs.id });
     });
   });
   return arrayWorkers;
+};
+
+export const submitWorker = async () => {
+  await setDoc(doc(db, 'Empleadxs', 'userId'), {
+    nombre: 'holi',
+    rol: 'jo',
+    correo: 'email',
+    turno: 'turnos',
+  });
 };

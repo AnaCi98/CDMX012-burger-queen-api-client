@@ -5,7 +5,7 @@
 import './WaiterRightBar.css';
 import { changeState } from '../data';
 
-export default function WaiterRightBar({ orders, dataOrders }) {
+export default function WaiterRightBar({ orders, dataOrders, getOutSession }) {
   const handleClickNotification = (orderId) => {
     changeState(orderId).then((products) => { dataOrders(); console.log(products); });
     console.log(orderId);
@@ -27,7 +27,7 @@ export default function WaiterRightBar({ orders, dataOrders }) {
           </object>
         )) : null}
       </section>
-      <button className="End-session" id="EndSession" type="button">Fin de Turno</button>
+      <button className="End-session" id="EndSession" type="button" onClick={() => { getOutSession(); }}>Fin de Turno</button>
     </aside>
   );
 }

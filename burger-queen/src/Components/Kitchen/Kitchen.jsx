@@ -6,8 +6,7 @@ import KitchenProducts from './KitchenProducts/KitchenProducts';
 import { dataProducts } from '../data';
 
 // eslint-disable-next-line react/prop-types
-function Kitchen({ activeName }) {
-  // eslint-disable-next-line no-unused-vars
+function Kitchen({ activeName, getOutSession }) {
   const [orders, setOrders] = useState();
 
   const dataOrders = async () => {
@@ -18,6 +17,10 @@ function Kitchen({ activeName }) {
   useEffect(() => {
     dataOrders();
   }, []);
+
+  const handleSignOutClick = () => {
+    getOutSession();
+  };
 
   console.log(activeName);
   return (
@@ -37,6 +40,7 @@ function Kitchen({ activeName }) {
         <p>Detalles de productos</p>
         <KitchenProducts orders={orders} />
       </section>
+      <button type="button" className="exit-button" onClick={() => handleSignOutClick()}>Salir de turno</button>
     </>
   );
 }

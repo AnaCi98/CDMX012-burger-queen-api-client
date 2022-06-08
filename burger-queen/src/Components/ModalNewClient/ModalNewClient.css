@@ -39,7 +39,6 @@ button{
     justify-content: center;
     align-items: center;
     border-style: none;
-
 }
 .Modal-close{
     grid-column: 2;
@@ -68,10 +67,13 @@ button{
     padding-bottom: 15px;
 }
 .Modal-submit{
+    padding: 5px, 10px;
     border-radius: 5px;
-    align-self: center;
+    margin-top: 1vh;
+    align-self: flex-end;
     box-shadow: -4px 4px 4px 0px #00000040;
     font-family: Belleza;
     font-size: x-large;
+    background-color: #eba73a84;
 }
 }

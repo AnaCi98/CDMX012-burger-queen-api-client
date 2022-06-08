@@ -7,7 +7,7 @@ import ClientsButtons from '../ClientsButtons/ClientsButtons';
 import WaiterRightBar from './WaiterRightBar';
 
 // eslint-disable-next-line react/prop-types
-function Waiter({ activeName, getClientName }) {
+function Waiter({ activeName, getClientName, getOutSession }) {
   // const navigate = useNavigate();
   const [modal, setModal] = useState(false);
   const [orders, setOrders] = useState();
@@ -47,7 +47,7 @@ function Waiter({ activeName, getClientName }) {
         </object>
       </section>
       <section>
-        <WaiterRightBar orders={orders} dataOrders={dataOrders} />
+        <WaiterRightBar orders={orders} dataOrders={dataOrders} getOutSession={getOutSession} />
       </section>
     </div>
   );

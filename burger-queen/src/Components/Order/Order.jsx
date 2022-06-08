@@ -91,7 +91,7 @@ function Order({ newClient, activeName }) {
         view={view}
         // total={total}
       />
-      <img onClick={() => { navigate('/waiter'); }} className="Back" alt="button to return" src="../img/Back.png" />
+      <img onClick={() => { navigate('/'); }} className="Back" alt="button to return" src="../img/Back.png" />
       <div className="options">
         <button onClick={() => { setTypeFood('breakfast'); console.log(typeFood); }} type="button">
           Desayunos

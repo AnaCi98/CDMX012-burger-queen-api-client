@@ -4,16 +4,23 @@
 import { useNavigate } from 'react-router-dom';
 import './Admin.css';
 
-function Admin() {
+function Admin({ getOutSession }) {
   const navigate = useNavigate();
+
+  const signOutSession = async () => {
+    await getOutSession();
+  };
 
   return (
     <section className="adminSection">
-      <button onClick={() => { navigate('/workers'); }} type="submit">
+      <button className="admin-btn" onClick={() => { navigate('/workers'); }} type="submit">
         Trabajadores
       </button>
-      <button onClick={() => { navigate('/products'); }} type="submit">
+      <button className="admin-btn" onClick={() => { navigate('/products'); }} type="submit">
         Productos
+      </button>
+      <button className="admin-btn" type="button" onClick={() => { signOutSession(); }}>
+        Cerrar sesion
       </button>
     </section>
 

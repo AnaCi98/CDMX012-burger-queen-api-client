@@ -14,7 +14,8 @@ export default function KitchenProducts({ orders }) {
         </tr>
       </thead>
       <tbody>
-        {orders ? orders.filter((order) => (order.status === 'pending').map((product) => prod))}
+        {/* orders ? orders.filter((order) =>
+        (order.status === 'pending').map((product) => prod)) */}
         <tr>
           <th scope="row">order</th>
           <td>1976</td>

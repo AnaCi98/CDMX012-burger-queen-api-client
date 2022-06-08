@@ -8,7 +8,7 @@ export const dataProducts = async (route) => {
   console.log(currentOrder);
 };
 getOrder(); */
-export const changeState = (id) => {
+export const changeState = async (id) => {
   const putMethod = {
     method: 'PUT', // Method itself
     headers: {
@@ -24,5 +24,6 @@ export const changeState = (id) => {
       // dateProcessed: '00:00',
     }),
   };
-  return fetch(`https://629d281fc6ef9335c0998121.mockapi.io/order/${id}`, putMethod).then((response) => response.json().products);
+  const response = await fetch(`https://629d281fc6ef9335c0998121.mockapi.io/order/${id}`, putMethod);
+  return response.json().products;
 };
