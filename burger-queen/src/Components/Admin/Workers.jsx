@@ -50,7 +50,7 @@ function Workers() {
               <th>Turno</th>
             </tr>
             <tr>
-              { workers ? workers.filter((worker) => worker.rol === role).map((worker) => (
+              { workers.filter((worker) => worker.rol === role).map((worker) => (
                 <>
                   <td>
                     {' '}
@@ -69,7 +69,7 @@ function Workers() {
                     <img className="Delete-workers" alt="button to delete" src="../img/Delete.png" />
                   </td>
                 </>
-              )) : null}
+              ))}
 
             </tr>
           </tbody>

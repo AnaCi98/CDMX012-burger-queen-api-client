@@ -4,12 +4,11 @@
 /* eslint-disable react/prop-types */
 import { useState } from 'react';
 import { createUserWithEmailAndPassword, updateCurrentUser, auth } from '../../Firebase/firebaseAuth';
-import { submitWorker } from '../../Firebase/firebaseFirestore';
+import { setDoc, doc, db } from '../../Firebase/firebaseFirestore';
 import './NewWorker.css';
 
 export default function NewWorker({ modalNewWorker, closeModal }) {
   const [infoWorker, setInfoWorker] = useState({});
-  // const [workerId, setUserId] = useState();
   const userActual = auth.currentUser;
   console.log(userActual);
   const changeInfo = (e) => {
@@ -20,20 +19,29 @@ export default function NewWorker({ modalNewWorker, closeModal }) {
   };
 
   const newAccount = async () => {
-    await createUserWithEmailAndPassword(
+    const infoUser = await createUserWithEmailAndPassword(
       auth,
       infoWorker.email,
       infoWorker.password,
     ).then((userCredential) => {
-      submitWorker();
-      updateCurrentUser(auth, userActual);
+      // submitWorker();
+      setDoc(doc(db, 'Empleadxs', userCredential.user.uid), {
+        nombre: infoWorker.name,
+        rol: infoWorker.rol,
+        correo: infoWorker.email,
+        turno: infoWorker.turno,
+      }).then(() => {
+        updateCurrentUser(auth, userActual);
+      });
+      return userCredential;
     });
+    return infoUser;
   };
 
   if (modalNewWorker) {
     return (
       <section className="New-worker-section">
-        <form>
+        <div>
           <p onClick={() => { closeModal(); setInfoWorker({}); }}>Cerrar</p>
           <input type="text" placeholder="Nombre" name="name" onChange={changeInfo} />
           <input type="text" placeholder="Correo electronico" name="email" onChange={changeInfo} />
@@ -57,7 +65,7 @@ export default function NewWorker({ modalNewWorker, closeModal }) {
           >
             Crear
           </button>
-        </form>
+        </div>
       </section>
     );
   } return null;
