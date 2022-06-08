@@ -5,7 +5,7 @@ import {
 } from 'firebase/firestore';
 import { app } from './firebaseApp';
 
-const db = getFirestore(app);
+export const db = getFirestore(app);
 const empleadxs = collection(db, 'Empleadxs');
 
 export const getRole = async (activeUser) => {
@@ -46,3 +46,4 @@ export const submitWorker = async () => {
     turno: 'turnos',
   });
 };
+export { setDoc, doc };

@@ -4,12 +4,11 @@
 /* eslint-disable react/prop-types */
 import { useState } from 'react';
 import { createUserWithEmailAndPassword, updateCurrentUser, auth } from '../../Firebase/firebaseAuth';
-import { submitWorker } from '../../Firebase/firebaseFirestore';
+import { setDoc, doc, db } from '../../Firebase/firebaseFirestore';
 import './NewWorker.css';
 
 export default function NewWorker({ modalNewWorker, closeModal }) {
   const [infoWorker, setInfoWorker] = useState({});
-  // const [workerId, setUserId] = useState();
   const userActual = auth.currentUser;
   console.log(userActual);
   const changeInfo = (e) => {
@@ -20,21 +19,31 @@ export default function NewWorker({ modalNewWorker, closeModal }) {
   };
 
   const newAccount = async () => {
-    await createUserWithEmailAndPassword(
+    const infoUser = await createUserWithEmailAndPassword(
       auth,
       infoWorker.email,
       infoWorker.password,
-    ).then((userCredential) => {
-      submitWorker();
-      updateCurrentUser(auth, userActual);
+    ).then((userCredential) => userCredential);
+    await updateCurrentUser(auth, userActual);
+    setDoc(doc(db, 'Empleadxs', infoUser.user.uid), {
+      nombre: infoWorker.name,
+      rol: infoWorker.rol,
+      correo: infoWorker.email,
+      turno: infoWorker.turno,
     });
   };
 
   if (modalNewWorker) {
     return (
       <section className="new-worker-section">
+        <img
+          className="Back-worker-view"
+          alt="button to return admin view"
+          src="../img/Back.png"
+          onClick={() => { closeModal(); setInfoWorker({}); }}
+        />
         <form className="new-worker-form">
-          <p className="close-new-worker" onClick={() => { closeModal(); setInfoWorker({}); }}>Cerrar</p>
+
           <input className="admin-form-input" type="text" placeholder="Nombre" name="name" onChange={changeInfo} />
           <input className="admin-form-input" type="text" placeholder="Correo electronico" name="email" onChange={changeInfo} />
           <input className="admin-form-input" type="password" placeholder="Contraseña" name="password" onChange={changeInfo} />

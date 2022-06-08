@@ -3,8 +3,12 @@
    .adminSection{
    
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+.adminSection h3{
+        font-size: 2rem;
 }
 .admin-btn{
         margin: 10px 10px;
