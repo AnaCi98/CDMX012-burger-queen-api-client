@@ -1,6 +1,6 @@
 @media screen and (orientation: landscape) {
 
-.New-worker-section{
+.new-worker-section{
     position: absolute;
     height: 60%;
     background-color: #FFF8D9;
@@ -8,7 +8,7 @@
     border-radius: 12px;
     border: 1px solid rgba(0, 0, 0, 0.304);
 }
-form{
+.new-worker-form{
     display: flex;
     flex-direction: column;
     align-items: center;

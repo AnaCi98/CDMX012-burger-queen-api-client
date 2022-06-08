@@ -14,31 +14,18 @@ export default function KitchenProducts({ orders }) {
         </tr>
       </thead>
       <tbody>
+        {/* orders ? orders.filter((order) =>
+        (order.status === 'pending').map((product) => prod)) */}
         <tr>
           <th scope="row">order</th>
           <td>1976</td>
           <td>9</td>
           <td>Ever fallen in love (with someone you ve)</td>
         </tr>
-        <tr>
-          <th scope="row">The Clash</th>
-          <td>1976</td>
-          <td>6</td>
-          <td>London Calling</td>
-        </tr>
-
-        ... se han eliminado algunas filas por abreviar
-
-        <tr>
-          <th scope="row">The Stranglers</th>
-          <td>1974</td>
-          <td>17</td>
-          <td>No More Heroes</td>
-        </tr>
       </tbody>
       <tfoot>
         <tr>
-          <th scope="row" colSpan="2">Número total de álbumes</th>
+          <th scope="row" colSpan="2">Número total de órdenes</th>
           <td colSpan="2">77</td>
         </tr>
       </tfoot>

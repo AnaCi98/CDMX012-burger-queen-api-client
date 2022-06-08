@@ -41,7 +41,7 @@ function Paths({ activeUser, getOutSession }) {
     case 'cocina':
       return (
         <Routes>
-          <Route path="/" element={<Kitchen activeName={activeName} />} />
+          <Route path="/" element={<Kitchen activeName={activeName} getOutSession={getOutSession} />} />
         </Routes>
       );
     case 'admin':
@@ -56,7 +56,6 @@ function Paths({ activeUser, getOutSession }) {
       return (
         <Routes>
           <Route path="*" element={<NotFound />} />
-          ;
         </Routes>
       );
   }

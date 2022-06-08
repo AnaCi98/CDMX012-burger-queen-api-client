@@ -2,13 +2,11 @@
 /* eslint-disable no-console */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import { useNavigate } from 'react-router-dom';
 import './Login.css';
 import { useState } from 'react';
 import { signIn } from '../../Firebase/firebaseAuth';
 
 function Login() {
-  const navigate = useNavigate();
   const [user, setUser] = useState();
   const [loginError, setLoginError] = useState();
   const [password, setPassword] = useState();

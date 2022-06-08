@@ -13,13 +13,13 @@ function Admin({ getOutSession }) {
 
   return (
     <section className="adminSection">
-      <button onClick={() => { navigate('/workers'); }} type="submit">
+      <button className="admin-btn" onClick={() => { navigate('/workers'); }} type="submit">
         Trabajadores
       </button>
-      <button onClick={() => { navigate('/products'); }} type="submit">
+      <button className="admin-btn" onClick={() => { navigate('/products'); }} type="submit">
         Productos
       </button>
-      <button type="button" onClick={() => { signOutSession(); }}>
+      <button className="admin-btn" type="button" onClick={() => { signOutSession(); }}>
         Cerrar sesion
       </button>
     </section>

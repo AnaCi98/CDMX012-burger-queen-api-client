@@ -40,12 +40,12 @@ export default function NewWorker({ modalNewWorker, closeModal }) {
 
   if (modalNewWorker) {
     return (
-      <section className="New-worker-section">
-        <div>
-          <p onClick={() => { closeModal(); setInfoWorker({}); }}>Cerrar</p>
-          <input type="text" placeholder="Nombre" name="name" onChange={changeInfo} />
-          <input type="text" placeholder="Correo electronico" name="email" onChange={changeInfo} />
-          <input type="password" placeholder="Contraseña" name="password" onChange={changeInfo} />
+      <section className="new-worker-section">
+        <form className="new-worker-form">
+          <p className="close-new-worker" onClick={() => { closeModal(); setInfoWorker({}); }}>Cerrar</p>
+          <input className="admin-form-input" type="text" placeholder="Nombre" name="name" onChange={changeInfo} />
+          <input className="admin-form-input" type="text" placeholder="Correo electronico" name="email" onChange={changeInfo} />
+          <input className="admin-form-input" type="password" placeholder="Contraseña" name="password" onChange={changeInfo} />
           <select name="rol" onChange={changeInfo}>
             <option selected hidden>Rol</option>
             <option value="meserx">Meserx</option>
@@ -65,7 +65,7 @@ export default function NewWorker({ modalNewWorker, closeModal }) {
           >
             Crear
           </button>
-        </div>
+        </form>
       </section>
     );
   } return null;
