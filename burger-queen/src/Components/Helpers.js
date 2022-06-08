@@ -1,5 +1,6 @@
 /* eslint-disable array-callback-return */
 /* eslint-disable no-param-reassign */
+
 export const listProducts = (object) => {
   const arrPerProduct = object.map((product) => [product.name, product]);
   const objectAll = [...new Map(arrPerProduct).values()];

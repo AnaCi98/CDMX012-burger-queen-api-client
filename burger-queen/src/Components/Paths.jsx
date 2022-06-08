@@ -1,38 +1,24 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-console */
 import { Route, Routes } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import Login from './Login/Login';
 import Waiter from './Waiter/Waiter';
 import Order from './Order/Order';
-import { onAuthStateChanged } from '../Firebase/firebaseApp';
-import { auth } from '../Firebase/firebaseAuth';
 import { getRole } from '../Firebase/firebaseFirestore';
 import Admin from './Admin/Admin';
-<<<<<<< HEAD
-import Kitchen from './Kitchen/Kitchen';
-=======
 import Stocktaking from './Admin/Stocktaking';
 import Workers from './Admin/Workers';
->>>>>>> 20d19eb8ec1e1b78232a2d547b90fb4648da9b96
+import Kitchen from './Kitchen/Kitchen';
+import NotFound from './404';
 
-function Paths() {
+function Paths({ activeUser, getOutSession }) {
   const [activeRole, setActiveRole] = useState(null);
-  const [activeUser, setActiveUser] = useState(null);
   const [activeName, setActiveName] = useState(null);
   const [newClient, setNewClient] = useState();
 
   const getClientName = (clientName) => {
     setNewClient(clientName);
   };
-
-  useEffect(() => {
-    const getUser = () => {
-      onAuthStateChanged(auth, (user) => {
-        setActiveUser(user.uid);
-      });
-    };
-    getUser();
-  }, []);
 
   useEffect(() => {
     const settingRole = () => {
@@ -48,33 +34,28 @@ function Paths() {
     case 'meserx':
       return (
         <Routes>
-          <Route path="/" element={<Login />} />
-          <Route path="/waiter" element={<Waiter activeName={activeName} getClientName={getClientName} />} />
+          <Route path="/" element={<Waiter activeName={activeName} getClientName={getClientName} getOutSession={getOutSession} />} />
           <Route path="/order" element={<Order activeName={activeName} newClient={newClient} />} />
         </Routes>
       );
     case 'cocina':
       return (
         <Routes>
-          <Route path="/" element={<Login />} />
-          <Route path="/kitchen" element={<Kitchen activeName={activeName} />} />
+          <Route path="/" element={<Kitchen activeName={activeName} />} />
         </Routes>
       );
     case 'admin':
-      // eslint-disable-next-line consistent-return
       return (
         <Routes>
-          <Route path="/admin" element={<Admin />} />
+          <Route path="/" element={<Admin getOutSession={getOutSession} />} />
           <Route path="/workers" element={<Workers />} />
           <Route path="/products" element={<Stocktaking />} />
         </Routes>
       );
-      // <h1>ADMIN en construcción</h1>;
     default:
-      // eslint-disable-next-line consistent-return
       return (
         <Routes>
-          <Route path="/" element={<Login />} />
+          <Route path="*" element={<NotFound />} />
           ;
         </Routes>
       );

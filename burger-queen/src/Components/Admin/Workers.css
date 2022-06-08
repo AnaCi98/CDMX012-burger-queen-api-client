@@ -53,4 +53,9 @@
 .Delete-workers{
     width: 5vh;
 }
+.Back-admin-view{
+    position: absolute;
+    top: 4%;
+    left: 4%;
+}
 }

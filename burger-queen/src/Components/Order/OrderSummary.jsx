@@ -53,7 +53,7 @@ function OrderSummary({
             </tbody>
           </table>
           { view ? (
-            <button type="submit" onClick={() => { addOrder(); navigate('/waiter'); }}>
+            <button type="submit" onClick={() => { addOrder(); navigate('/'); }}>
               Confirmar
             </button>
           ) : null }

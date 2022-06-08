@@ -4,8 +4,12 @@
 import { useNavigate } from 'react-router-dom';
 import './Admin.css';
 
-function Admin() {
+function Admin({ getOutSession }) {
   const navigate = useNavigate();
+
+  const signOutSession = async () => {
+    await getOutSession();
+  };
 
   return (
     <section className="adminSection">
@@ -14,6 +18,9 @@ function Admin() {
       </button>
       <button onClick={() => { navigate('/products'); }} type="submit">
         Productos
+      </button>
+      <button type="button" onClick={() => { signOutSession(); }}>
+        Cerrar sesion
       </button>
     </section>
 

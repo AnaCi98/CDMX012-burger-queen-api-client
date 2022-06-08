@@ -14,9 +14,7 @@ function Login() {
   const [password, setPassword] = useState();
   const handleSignInClick = (userMail, userPassword) => {
     // eslint-disable-next-line no-unused-vars
-    signIn(userMail, userPassword).then((userCredential) => {
-      navigate('/kitchen');
-    }).catch((error) => {
+    signIn(userMail, userPassword).then((userCredential) => userCredential).catch((error) => {
       console.log(error.code);
       switch (error.code) {
         case 'auth/user-not-found':
