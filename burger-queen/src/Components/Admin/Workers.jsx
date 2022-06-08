@@ -41,23 +41,27 @@ function Workers() {
             Agregar
           </button>
         </section>
-        <table className="Workers-table">
-          <tbody>
-            <tr>
-              <th>Nombre</th>
-              <th>Correo electronico</th>
-              <th>Rol</th>
-              <th>Turno</th>
-            </tr>
-            <tr>
+        <section className="Table-section-workers">
+          <table className="Workers-table">
+            <tbody>
+              <tr>
+                <th>Nombre</th>
+                <th>Correo electronico</th>
+                <th>Rol</th>
+                <th>Turno</th>
+              </tr>
               { workers.filter((worker) => worker.rol === role).map((worker) => (
-                <>
+                <tr>
                   <td>
                     {' '}
                     {worker.nombre}
                     {' '}
                   </td>
-                  <td> lupe_ci98 @hotmail.com </td>
+                  <td>
+                    {' '}
+                    {worker.correo}
+                    {' '}
+                  </td>
                   <td>
                     {' '}
                     {worker.rol}
@@ -68,12 +72,11 @@ function Workers() {
                     <img className="Edit-workers" alt="button to edit" src="../img/Edit.png" />
                     <img className="Delete-workers" alt="button to delete" src="../img/Delete.png" />
                   </td>
-                </>
+                </tr>
               ))}
-
-            </tr>
-          </tbody>
-        </table>
+            </tbody>
+          </table>
+        </section>
       </section>
     </section>
 

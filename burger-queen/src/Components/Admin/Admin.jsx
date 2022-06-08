@@ -13,8 +13,9 @@ function Admin({ getOutSession }) {
 
   return (
     <section className="adminSection">
+      <h3>Bienvenidx, Ana</h3>
       <button className="admin-btn" onClick={() => { navigate('/workers'); }} type="submit">
-        Trabajadores
+        Empleadxs
       </button>
       <button className="admin-btn" onClick={() => { navigate('/products'); }} type="submit">
         Productos

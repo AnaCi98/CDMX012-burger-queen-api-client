@@ -4,11 +4,11 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    top: 20%;
+    top: 15%;
     left: 5%;
     background-color: #FFF8D9;
     width: 90%;
-    height: 55vh;
+    height: 80vh;
     z-index: 10;
     box-shadow: -4px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 12px;
@@ -22,6 +22,12 @@
     font-family: 'Belleza', cursive;
     border-spacing: 8vh 1vh;
     text-align: center;
+
+}
+.Table-section-workers{
+    overflow: scroll;
+    margin-top: 2%;
+    margin-bottom: 2%;
 }
 .Workers-filter{
     display: flex;
