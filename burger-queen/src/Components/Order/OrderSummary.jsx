@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import './OrderSummary.css';
 
 function OrderSummary({
-  structureList, addOrder, summary, closeSummary, view,
+  structureList, addOrder, summary, closeSummary, view, confirmation,
 }) {
   const navigate = useNavigate();
 
@@ -53,8 +53,8 @@ function OrderSummary({
             </tbody>
           </table>
           { view ? (
-            <button type="submit" onClick={() => { addOrder(); navigate('/'); }}>
-              Confirmar
+            <button className="confirmation" type="submit" onClick={() => { addOrder(); navigate('/'); }}>
+              {confirmation}
             </button>
           ) : null }
         </section>

@@ -23,8 +23,16 @@
 
 .clients-title {
     font-family: Cookie;
-    font-size:xx-large;
+    font-size:xxx-large;
+    height: 10vh;
     display:flex;
     align-items: center;
     justify-content: center;
+}
+.kitchen-down{
+    height: 50vh;
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    padding-left: 5vw;
 }
