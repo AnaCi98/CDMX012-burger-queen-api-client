@@ -106,12 +106,11 @@ function Order({ newClient, activeName }) {
       <section className="sectionOrders">
         <p className="nameTable">
           Orden
-          {' '}
           {newClient}
         </p>
         <div className="listProducts">
           { structureList ? structureList.map((product) => (
-            <div className="infoProducts">
+            <div className="infoProducts" key={product.id}>
               <p>{product.product}</p>
               <button onClick={() => { deleteProduct(product); }} type="submit">-</button>
               <p>{product.qty}</p>

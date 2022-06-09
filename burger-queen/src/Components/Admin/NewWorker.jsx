@@ -2,15 +2,23 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable react/prop-types */
-import { useState } from 'react';
-import { createUserWithEmailAndPassword, updateCurrentUser, auth } from '../../Firebase/firebaseAuth';
-import { setDoc, doc, db } from '../../Firebase/firebaseFirestore';
+import { useEffect, useState } from 'react';
+import { createUser, currentUserActual, auth } from '../../Firebase/firebaseAuth';
+import { submitWorker } from '../../Firebase/firebaseFirestore';
 import './NewWorker.css';
 
-export default function NewWorker({ modalNewWorker, closeModal }) {
-  const [infoWorker, setInfoWorker] = useState({});
+export default function NewWorker({
+  modalNewWorker,
+  closeModal, edit, infoPerUser, closeEditModal,
+}) {
+  const [infoWorker, setInfoWorker] = useState({
+    nombre: '',
+    rol: '',
+    correo: '',
+    contraseña: '',
+    turno: '',
+  });
   const userActual = auth.currentUser;
-  console.log(userActual);
   const changeInfo = (e) => {
     e.persist();
     const { name } = e.target;
@@ -18,20 +26,27 @@ export default function NewWorker({ modalNewWorker, closeModal }) {
     setInfoWorker({ ...infoWorker, [name]: val });
   };
 
-  const newAccount = async () => {
-    const infoUser = await createUserWithEmailAndPassword(
-      auth,
+  const newAccount = async (e) => {
+    e.preventDefault();
+    createUser(
       infoWorker.email,
       infoWorker.password,
-    ).then((userCredential) => userCredential);
-    await updateCurrentUser(auth, userActual);
-    setDoc(doc(db, 'Empleadxs', infoUser.user.uid), {
-      nombre: infoWorker.name,
-      rol: infoWorker.rol,
-      correo: infoWorker.email,
-      turno: infoWorker.turno,
+    ).then((userCredential) => {
+      submitWorker(
+        infoWorker.name,
+        infoWorker.rol,
+        infoWorker.email,
+        infoWorker.turno,
+        userCredential.user.uid,
+      ).then(() => currentUserActual(userActual));
     });
   };
+
+  useEffect(() => {
+    if (edit) {
+      setInfoWorker(infoPerUser);
+    }
+  }, [infoPerUser]);
 
   if (modalNewWorker) {
     return (
@@ -40,33 +55,45 @@ export default function NewWorker({ modalNewWorker, closeModal }) {
           className="Back-worker-view"
           alt="button to return admin view"
           src="../img/Back.png"
-          onClick={() => { closeModal(); setInfoWorker({}); }}
+          onClick={() => { closeModal(); setInfoWorker({}); closeEditModal(); }}
         />
-        <form className="new-worker-form">
-
-          <input className="admin-form-input" type="text" placeholder="Nombre" name="name" onChange={changeInfo} />
-          <input className="admin-form-input" type="text" placeholder="Correo electronico" name="email" onChange={changeInfo} />
-          <input className="admin-form-input" type="password" placeholder="Contraseña" name="password" onChange={changeInfo} />
-          <select name="rol" onChange={changeInfo}>
-            <option selected hidden>Rol</option>
+        <div className="new-worker-form">
+          <input className="admin-form-input" type="text" placeholder="Nombre" defaultValue={infoWorker.nombre} name="name" onChange={changeInfo} />
+          <input className="admin-form-input" type="text" placeholder="Correo electronico" defaultValue={infoWorker.correo} name="email" onChange={changeInfo} />
+          {edit ? null : (<input className="admin-form-input" type="password" placeholder="Contraseña" name="password" onChange={changeInfo} />)}
+          <select defaultValue="DEFAULT" name="rol" onChange={changeInfo}>
+            <option value="DEFAULT" hidden>Rol</option>
             <option value="meserx">Meserx</option>
             <option value="cocina">Cocina</option>
           </select>
-          <select name="turno" onChange={changeInfo}>
-            <option selected hidden>Turno</option>
-            <option value="meserx">Matutino</option>
-            <option value="cocina">Vespertino</option>
+          <select defaultValue="DEFAULT" name="turno" onChange={changeInfo}>
+            <option value="DEFAULT" hidden>Turno</option>
+            <option value="matutino">Matutino</option>
+            <option value="vespertino">Vespertino</option>
           </select>
-          <button
-            type="button"
-            className="Add-worker"
-            onClick={() => {
-              newAccount();
-            }}
-          >
-            Crear
-          </button>
-        </form>
+          {edit ? null : (
+            <button
+              type="button"
+              className="Add-worker"
+              onClick={(e) => {
+                newAccount(e);
+              }}
+            >
+              Crear
+            </button>
+          ) }
+          {edit ? (
+            <button
+              type="button"
+              className="Add-worker"
+              onClick={(e) => {
+                console.log('actualiza');
+              }}
+            >
+              Actualizar
+            </button>
+          ) : null}
+        </div>
       </section>
     );
   } return null;

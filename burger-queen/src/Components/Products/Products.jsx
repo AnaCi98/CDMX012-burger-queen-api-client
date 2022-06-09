@@ -11,7 +11,7 @@ function Products({
 }) {
   return (
     products ? products.filter((product) => product.type === typeFood).map((product) => (
-      <article className="product-article" onClick={() => { addList(product); }}>
+      <article className="product-article" key={product.id} onClick={() => { addList(product); }}>
         <p className="product-name">{product.name}</p>
         <p>
           $

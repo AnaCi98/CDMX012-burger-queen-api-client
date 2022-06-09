@@ -7,10 +7,16 @@ import {
 
 export const auth = getAuth(app);
 export const signIn = (email, password) => signInWithEmailAndPassword(auth, email, password);
+// export const getUsers = (uid) => auth.getUser(uid);
 // export const getOutSession = () => signOut(auth);
-// export const createUser = (email, password) => {
-//   createUserWithEmailAndPassword(auth, email, password);
-// };
+export const createUser = (
+  email,
+  password,
+) => createUserWithEmailAndPassword(auth, email, password);
+
+export const currentUserActual = (userActual) => {
+  updateCurrentUser(auth, userActual);
+};
 
 export { updateCurrentUser, createUserWithEmailAndPassword, signOut };
 

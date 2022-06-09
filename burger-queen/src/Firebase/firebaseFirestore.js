@@ -1,7 +1,7 @@
 /* eslint-disable import/prefer-default-export */
 /* eslint-disable no-console */
 import {
-  collection, getFirestore, getDocs, onSnapshot, query, doc, setDoc,
+  collection, getFirestore, getDocs, doc, setDoc, deleteDoc,
 } from 'firebase/firestore';
 import { app } from './firebaseApp';
 
@@ -26,24 +26,22 @@ export const getRole = async (activeUser) => {
   return document;
 };
 
-export const getWorkers = () => {
+export const getWorkers = async () => {
   const arrayWorkers = [];
-  const q = query(collection(db, 'Empleadxs'));
-  onSnapshot(q, (querySnapshot) => {
-    querySnapshot.forEach((docs) => {
-      console.log(docs.data());
-      arrayWorkers.push({ ...docs.data(), id: docs.id });
-    });
-  });
+  const q = collection(db, 'Empleadxs');
+  const data = await getDocs(q);
+  data.forEach((docu) => arrayWorkers.push({ ...docu.data(), id: docu.id }));
   return arrayWorkers;
 };
 
-export const submitWorker = async () => {
-  await setDoc(doc(db, 'Empleadxs', 'userId'), {
-    nombre: 'holi',
-    rol: 'jo',
-    correo: 'email',
-    turno: 'turnos',
-  });
-};
+getWorkers();
+
+export const submitWorker = (name, role, email, turn, id) => setDoc(doc(db, 'Empleadxs', id), {
+  nombre: name,
+  rol: role,
+  correo: email,
+  turno: turn,
+});
 export { setDoc, doc };
+
+export const deleteData = (id) => deleteDoc(doc(db, 'Empleadxs', id));
