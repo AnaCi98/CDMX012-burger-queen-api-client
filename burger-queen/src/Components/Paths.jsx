@@ -5,9 +5,8 @@ import { useState, useEffect } from 'react';
 import Waiter from './Waiter/Waiter';
 import Order from './Order/Order';
 import { getRole } from '../Firebase/firebaseFirestore';
-import Admin from './Admin/Admin';
 import Stocktaking from './Admin/Stocktaking';
-import Workers from './Admin/Workers';
+import Admin from './Admin/Admin';
 import Kitchen from './Kitchen/Kitchen';
 import NotFound from './404';
 
@@ -48,7 +47,6 @@ function Paths({ activeUser, getOutSession }) {
       return (
         <Routes>
           <Route path="/" element={<Admin getOutSession={getOutSession} />} />
-          <Route path="/workers" element={<Workers />} />
           <Route path="/products" element={<Stocktaking />} />
         </Routes>
       );
