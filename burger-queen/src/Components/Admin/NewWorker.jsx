@@ -9,15 +9,17 @@ import './NewWorker.css';
 
 export default function NewWorker({
   modalNewWorker,
-  closeModal, edit, infoPerUser, closeEditModal,
+  closeModal, edit, infoPerUser, closeEditModal, editEmployee, filter,
 }) {
-  const [infoWorker, setInfoWorker] = useState({
+  const initialValues = {
     nombre: '',
-    rol: '',
+    rol: 'Rol',
     correo: '',
-    contraseña: '',
-    turno: '',
-  });
+    password: '',
+    turno: 'Turno',
+  };
+
+  const [infoWorker, setInfoWorker] = useState(initialValues);
   const userActual = auth.currentUser;
   const changeInfo = (e) => {
     e.persist();
@@ -29,13 +31,13 @@ export default function NewWorker({
   const newAccount = async (e) => {
     e.preventDefault();
     createUser(
-      infoWorker.email,
+      infoWorker.correo,
       infoWorker.password,
     ).then((userCredential) => {
       submitWorker(
-        infoWorker.name,
+        infoWorker.nombre,
         infoWorker.rol,
-        infoWorker.email,
+        infoWorker.correo,
         infoWorker.turno,
         userCredential.user.uid,
       ).then(() => currentUserActual(userActual));
@@ -55,22 +57,41 @@ export default function NewWorker({
           className="Back-worker-view"
           alt="button to return admin view"
           src="../img/Back.png"
-          onClick={() => { closeModal(); setInfoWorker({}); closeEditModal(); }}
+          onClick={() => { closeModal(); setInfoWorker(initialValues); closeEditModal(); }}
         />
         <div className="new-worker-form">
-          <input className="admin-form-input" type="text" placeholder="Nombre" defaultValue={infoWorker.nombre} name="name" onChange={changeInfo} />
-          <input className="admin-form-input" type="text" placeholder="Correo electronico" defaultValue={infoWorker.correo} name="email" onChange={changeInfo} />
-          {edit ? null : (<input className="admin-form-input" type="password" placeholder="Contraseña" name="password" onChange={changeInfo} />)}
-          <select defaultValue="DEFAULT" name="rol" onChange={changeInfo}>
-            <option value="DEFAULT" hidden>Rol</option>
-            <option value="meserx">Meserx</option>
-            <option value="cocina">Cocina</option>
-          </select>
-          <select defaultValue="DEFAULT" name="turno" onChange={changeInfo}>
-            <option value="DEFAULT" hidden>Turno</option>
-            <option value="matutino">Matutino</option>
-            <option value="vespertino">Vespertino</option>
-          </select>
+          { filter === 'products' ? (<p>Agregar producto</p>) : (<p>Agregar empleade</p>)}
+          <input className="admin-form-input" type="text" placeholder="Nombre" defaultValue={infoWorker.nombre} name="nombre" onChange={changeInfo} />
+          {edit || filter === 'products' ? null : (
+            <>
+              <input className="admin-form-input" type="text" placeholder="Correo electronico" defaultValue={infoWorker.correo} name="correo" onChange={changeInfo} />
+              <input className="admin-form-input" type="password" placeholder="Contraseña" name="password" onChange={changeInfo} />
+            </>
+          )}
+          { filter === 'products' ? null : (
+            <>
+              <select defaultValue="DEFAULT" name="rol" onChange={changeInfo}>
+                <option value="DEFAULT" hidden>{infoWorker.rol}</option>
+                <option value="meserx">Meserx</option>
+                <option value="cocina">Cocina</option>
+              </select>
+              <select defaultValue="DEFAULT" name="turno" onChange={changeInfo}>
+                <option value="DEFAULT" hidden>{infoWorker.turno}</option>
+                <option value="matutino">Matutino</option>
+                <option value="vespertino">Vespertino</option>
+              </select>
+            </>
+          )}
+          {filter === 'products' ? (
+            <>
+              <input placeholder="Precio" />
+              <select defaultValue="DEFAULT" name="Tipo">
+                <option value="DEFAULT" hidden>Tipo</option>
+                <option value="meal">Desayuno</option>
+                <option value="breakfast">Comida</option>
+              </select>
+            </>
+          ) : null }
           {edit ? null : (
             <button
               type="button"
@@ -86,8 +107,13 @@ export default function NewWorker({
             <button
               type="button"
               className="Add-worker"
-              onClick={(e) => {
-                console.log('actualiza');
+              onClick={() => {
+                editEmployee(
+                  infoWorker.id,
+                  infoWorker.nombre,
+                  infoWorker.rol,
+                  infoWorker.turno,
+                );
               }}
             >
               Actualizar

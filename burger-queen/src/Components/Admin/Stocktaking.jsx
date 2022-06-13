@@ -2,12 +2,17 @@ import './Stocktaking.css';
 
 function Stocktaking() {
   return (
-    <section>
-      <div>
-        Aqui van los productos jeje
-      </div>
+    <section className="Table-section-workers">
+      <table className="Workers-table">
+        <tbody>
+          <tr>
+            <th>Nombre</th>
+            <th>Precio</th>
+            <th>Type</th>
+          </tr>
+        </tbody>
+      </table>
     </section>
-
   );
 }
 

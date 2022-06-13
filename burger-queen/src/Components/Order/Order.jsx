@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import './Order.css';
 import Products from '../Products/Products';
-import { dataProducts } from '../data';
+import { addNewOrder, dataProducts } from '../data';
 import { listProducts, deleteOne, addOne } from '../Helpers';
 import OrderSummary from './OrderSummary';
 
@@ -21,6 +21,18 @@ function Order({ newClient, activeName }) {
   const [products, setProducts] = useState();
   const [typeFood, setTypeFood] = useState('meal');
   const navigate = useNavigate();
+
+  const initialValues = {
+    Meal: 'True',
+    Breakfast: 'False',
+  };
+
+  const pressBreakfast = {
+    Meal: 'False',
+    Breakfast: 'True',
+  };
+
+  const [pressBtn, setPressBtn] = useState(initialValues);
 
   // Obtener productos de la data
   const dataProduct = async () => {
@@ -47,11 +59,7 @@ function Order({ newClient, activeName }) {
   const closeSummary = () => {
     setSummary(false);
   };
-  // Suma del total de productos
-  // const amount = () => {
-  //   const amountTotal = 0;
-  //   structureList.
-  // }
+
   useEffect(() => {
     dataProduct();
   }, []);
@@ -61,24 +69,7 @@ function Order({ newClient, activeName }) {
   }, [listOrder]);
 
   const addOrder = () => {
-    const date = new Date();
-    const [hour, minutes, seconds] = [date.getHours(), date.getMinutes(), date.getSeconds()];
-
-    const putMethod = {
-      method: 'POST',
-      headers: {
-        'Content-type': 'application/json; charset=UTF-8',
-      },
-      body: JSON.stringify({
-        client: newClient,
-        userId: activeName,
-        products: structureList,
-        status: 'pending',
-        dateEntry: [hour, minutes, seconds],
-        dateProcessed: '00:00',
-      }),
-    };
-    fetch('https://629d281fc6ef9335c0998121.mockapi.io/order', putMethod).then((response) => response.json().products).then((product) => console.log(product));
+    addNewOrder(newClient, activeName, structureList).then((order) => order);
   };
 
   return (
@@ -93,10 +84,10 @@ function Order({ newClient, activeName }) {
       />
       <img onClick={() => { navigate('/'); }} className="Back" alt="button to return" src="../img/Back.png" />
       <div className="options">
-        <button onClick={() => { setTypeFood('breakfast'); console.log(typeFood); }} type="button">
+        <button className={`press${pressBtn.Meal}`} onClick={() => { setTypeFood('breakfast'); setPressBtn(initialValues); }} type="button">
           Desayunos
         </button>
-        <button onClick={() => { setTypeFood('meal'); console.log(typeFood); }} type="button">
+        <button className={`press${pressBtn.Breakfast}`} onClick={() => { setTypeFood('meal'); setPressBtn(pressBreakfast); }} type="button">
           Comidas
         </button>
       </div>

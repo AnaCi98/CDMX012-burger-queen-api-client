@@ -1,7 +1,7 @@
 /* eslint-disable import/prefer-default-export */
 /* eslint-disable no-console */
 import {
-  collection, getFirestore, getDocs, doc, setDoc, deleteDoc,
+  collection, getFirestore, getDocs, doc, setDoc, deleteDoc, updateDoc,
 } from 'firebase/firestore';
 import { app } from './firebaseApp';
 
@@ -45,3 +45,5 @@ export const submitWorker = (name, role, email, turn, id) => setDoc(doc(db, 'Emp
 export { setDoc, doc };
 
 export const deleteData = (id) => deleteDoc(doc(db, 'Empleadxs', id));
+
+export const updateEmployee = async (id, name, role, turn) => updateDoc(doc(db, 'Empleadxs', id), { nombre: name, rol: role, turno: turn });

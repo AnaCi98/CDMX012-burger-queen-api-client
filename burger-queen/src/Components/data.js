@@ -27,3 +27,25 @@ export const changeState = async (id) => {
   const response = await fetch(`https://629d281fc6ef9335c0998121.mockapi.io/order/${id}`, putMethod);
   return response.json().products;
 };
+
+export const addNewOrder = async (newClient, activeName, structureList) => {
+  const date = new Date();
+  const [hour, minutes, seconds] = [date.getHours(), date.getMinutes(), date.getSeconds()];
+
+  const putMethod = {
+    method: 'POST',
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8',
+    },
+    body: JSON.stringify({
+      client: newClient,
+      userId: activeName,
+      products: structureList,
+      status: 'pending',
+      dateEntry: [hour, minutes, seconds],
+      dateProcessed: '00:00',
+    }),
+  };
+  const response = await fetch('https://629d281fc6ef9335c0998121.mockapi.io/order', putMethod);
+  return response.json();
+};

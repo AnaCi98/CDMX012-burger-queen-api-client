@@ -2,7 +2,7 @@
 
 .new-worker-section{
     position: absolute;
-    height:75%;
+    height:auto;
     width: 40%;
     background-color: #FFF8D9;
     box-shadow: -4px 4px 4px rgba(0, 0, 0, 0.25);
@@ -16,7 +16,14 @@
     justify-content: center;
     font-family: 'Belleza', cursive;
     row-gap: 2vh;
-    margin-top: 5%;
+    margin-top: 2%;
+}
+.new-worker-form p{
+    margin-top: 0;
+    margin-bottom: 3%;
+    font-family: 'Belleza', cursive;
+    font-size: 1.3rem;
+    font-weight: bold;
 }
 .new-worker-form input{
     border: 1px solid #C32300;
@@ -36,6 +43,7 @@ select option{
 }
 .Add-worker{
     margin-top: 3%;
+    margin-bottom: 6%;
     height: 7vh;
     width: 15vh;
     padding: 5px, 10px;
