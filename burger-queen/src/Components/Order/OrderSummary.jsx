@@ -2,6 +2,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable react/prop-types */
+// import { useNavigate } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import './OrderSummary.css';
 
@@ -53,7 +54,7 @@ function OrderSummary({
             </tbody>
           </table>
           { view ? (
-            <button className="confirmation" type="submit" onClick={() => { addOrder(); navigate('/'); }}>
+            <button className="confirmation" type="submit" onClick={() => { addOrder(); closeSummary(); navigate('/'); }}>
               {confirmation}
             </button>
           ) : null }

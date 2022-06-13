@@ -3,15 +3,16 @@
 /* eslint-disable react/prop-types */
 import './KitchenOrders.css';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import OrderSummary from '../../Order/OrderSummary';
 
-export default function KitchenOrders({ orders }) {
+export default function KitchenOrders({ orders, dataOrders }) {
   const [openSummary, setOpenSummary] = useState();
   const [currentOrder, setCurrentOrder] = useState();
   const [orderId, setOrderId] = useState();
+  // const [orders, setOrders] = useState();
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const handleClickOrder = (order) => {
     console.log(order);
@@ -19,6 +20,7 @@ export default function KitchenOrders({ orders }) {
     setCurrentOrder(order.products);
     setOpenSummary(true);
   };
+
   const closeSummary = () => setOpenSummary(false);
 
   const changeStatusKitchen = () => {
@@ -34,21 +36,24 @@ export default function KitchenOrders({ orders }) {
         dateProcessed: [hour, minutes, seconds],
       }),
     };
-    const response = fetch(`https://629d281fc6ef9335c0998121.mockapi.io/order/${orderId}`, putMethod).then((responses) => responses.json().products);
-    response.then(navigate('/'));
+    return fetch(`https://629d281fc6ef9335c0998121.mockapi.io/order/${orderId}`, putMethod).then((responses) => responses.json().products);
+  };
+
+  const render = async () => {
+    await changeStatusKitchen().then(() => dataOrders());
   };
 
   return (
     <div className="kitchen-order">
       <OrderSummary
         structureList={currentOrder}
-        addOrder={changeStatusKitchen}
+        addOrder={render}
         summary={openSummary}
         closeSummary={closeSummary}
         view
         confirmation="Listo para entregar"
       />
-      {orders ? orders.filter((order) => (order.status === 'pending')).map((order) => (
+      {orders ? orders.map((order) => (
         <object className="order-postit" key={order.id} id={order.id} onClick={() => handleClickOrder(order)}>
           <p>{order.id}</p>
           <p className="order-date-entry">

@@ -4,6 +4,7 @@ import KitchenClock from './KitchenClock/KitchenClock';
 import KitchenOrders from './KitchenOrders/KitchenOrders';
 // import KitchenProducts from './KitchenProducts/KitchenProducts';
 import { dataProducts } from '../data';
+import KitchenProducts from './KitchenProducts/KitchenProducts';
 
 // eslint-disable-next-line react/prop-types
 function Kitchen({ activeName, getOutSession }) {
@@ -11,7 +12,7 @@ function Kitchen({ activeName, getOutSession }) {
 
   const dataOrders = async () => {
     const allOrders = await dataProducts('order');
-    setOrders(allOrders);
+    setOrders(allOrders.filter((order) => order.status === 'pending'));
   };
 
   useEffect(() => {
@@ -21,12 +22,6 @@ function Kitchen({ activeName, getOutSession }) {
   const handleSignOutClick = () => {
     getOutSession();
   };
-
-  /*   const productsAbstract = () => {
-    console.log(orders.products);
-  };
-  productsAbstract(); */
-
   console.log(activeName);
   return (
     <>
@@ -37,11 +32,12 @@ function Kitchen({ activeName, getOutSession }) {
               Órdenes activas
             </p>
           </section>
-          <KitchenOrders orders={orders} />
+          <KitchenOrders orders={orders} dataOrders={dataOrders} />
         </article>
         <KitchenClock />
       </section>
       <section className="kitchen-down">
+        <KitchenProducts orders={orders} />
         <button type="button" className="End-session" onClick={() => handleSignOutClick()}>Fin de turno</button>
       </section>
     </>
