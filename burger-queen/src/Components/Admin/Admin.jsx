@@ -10,6 +10,7 @@ import NewWorker from './NewWorker';
 import ListEmployees from './ListEmployees';
 import Stocktaking from './Stocktaking';
 import './Admin.css';
+import { dataProducts, editProduct } from '../data';
 
 function Admin({ getOutSession }) {
   const [workers, setWorkersData] = useState();
@@ -18,7 +19,7 @@ function Admin({ getOutSession }) {
   const [edit, setEdit] = useState(false);
   const [infoPerUser, setInfoPerUser] = useState();
   const navigate = useNavigate();
-
+  // variables efecto de botones
   const initialValues = {
     Employees: 'True',
     Products: 'False',
@@ -30,21 +31,9 @@ function Admin({ getOutSession }) {
   };
 
   const [pressBtn, setPressBtn] = useState(initialValues);
-
+  // funciones para jalar y editar data de empleades
   const dataEmployee = async () => {
     getWorkers().then((res) => setWorkersData(res));
-  };
-
-  useEffect(() => {
-    dataEmployee();
-  }, []);
-
-  const closeModal = () => {
-    setNewWorker(false);
-  };
-
-  const closeEditModal = () => {
-    setEdit(false);
   };
 
   const deleteEmployee = async (id) => {
@@ -57,11 +46,36 @@ function Admin({ getOutSession }) {
       .catch((error) => console.log(error));
   };
 
+  useEffect(() => {
+    dataEmployee();
+  }, []);
+
+  // variable para estado de modal
+  const closeModal = () => {
+    setNewWorker(false);
+  };
+
+  const closeEditModal = () => {
+    setEdit(false);
+  };
+
   const editFunction = (worker) => {
     setEdit(true);
     setInfoPerUser(worker);
     setNewWorker(true);
   };
+
+  // funciones para productos
+  const [allProducts, setAllProducts] = useState();
+
+  const allDataProducts = async () => {
+    const products = await dataProducts('products');
+    setAllProducts(products);
+  };
+
+  useEffect(() => {
+    allDataProducts();
+  }, []);
 
   return (
     <section>
@@ -95,7 +109,7 @@ function Admin({ getOutSession }) {
         {
           filter === 'empleadxs'
             ? <ListEmployees editFunction={editFunction} workers={workers} deleteEmployee={deleteEmployee} />
-            : <Stocktaking />
+            : <Stocktaking allProducts={allProducts} editProduct={editProduct} />
         }
       </section>
     </section>
