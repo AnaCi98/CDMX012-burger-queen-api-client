@@ -13,10 +13,15 @@ import './Admin.css';
 import { dataProducts, editProduct } from '../data';
 
 function Admin({ getOutSession }) {
+  // variable de estado que contiene la informacion de TODOS los empleades,
+  // a diferencia de infoPerUser, que solo contiene la informacion de UN empleade
   const [workers, setWorkersData] = useState();
   const [modalNewWorker, setNewWorker] = useState(false);
+  // variable de estado para filtrar listas, ya sea empleades o productos
   const [filter, setFilter] = useState('empleadxs');
   const [edit, setEdit] = useState(false);
+  // infoPerUser es la variable de estado que
+  // contiene la informacion de cada uno de los empleades (revisar linea 72 de Admin)
   const [infoPerUser, setInfoPerUser] = useState();
   const navigate = useNavigate();
   // variables efecto de botones
@@ -35,11 +40,12 @@ function Admin({ getOutSession }) {
   const dataEmployee = async () => {
     getWorkers().then((res) => setWorkersData(res));
   };
-
+  // funcion para eliminar empleade
   const deleteEmployee = async (id) => {
     deleteData(id).then(() => dataEmployee());
   };
 
+  // funcion para editar empleade
   const editEmployee = (id, name, rol, turn) => {
     updateEmployee(id, name, rol, turn)
       .then(() => { setNewWorker(false); dataEmployee(); })
@@ -50,17 +56,25 @@ function Admin({ getOutSession }) {
     dataEmployee();
   }, []);
 
-  // variable para estado de modal
+  // funcion para cerrar modal (modalNewWorker)
   const closeModal = () => {
     setNewWorker(false);
   };
 
+  // funcion para cambiar de estado la variable edit a false,
+  // edit se utiliza en NewWorker para condicionar el renderizado de
+  // distintos inputs (observar comentarios en las lineas 65 y 109 de NewWorker.jsx)
   const closeEditModal = () => {
     setEdit(false);
   };
 
+  // funcion para abrir modal, cambiar el estado de la variable edit a true,
+  // y setear la informacion de empleades en la variable de estado InfoPerUser
+  // worker es la informacion de un empleade que aparece en la lista (linea 32 de ListEmployees)
   const editFunction = (worker) => {
     setEdit(true);
+    // esta variable de estado se setea con la informacion que contiene del empleade
+    // revisar la consola de la linea 32 de ListEmployees.jsx
     setInfoPerUser(worker);
     setNewWorker(true);
   };

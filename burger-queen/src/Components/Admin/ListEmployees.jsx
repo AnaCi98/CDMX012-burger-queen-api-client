@@ -29,7 +29,7 @@ function ListEmployees({ workers, editFunction, deleteEmployee }) {
                 {worker.turno}
               </td>
               <td>
-                <img className="Edit-workers" alt="button to edit" src="../img/Edit.png" onClick={() => editFunction(worker)} />
+                <img className="Edit-workers" alt="button to edit" src="../img/Edit.png" onClick={() => { editFunction(worker); console.log(worker); }} />
                 <img className="Delete-workers" alt="button to delete" src="../img/Delete.png" onClick={() => deleteEmployee(worker.id)} />
               </td>
             </tr>
