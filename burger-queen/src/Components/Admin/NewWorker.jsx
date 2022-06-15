@@ -28,6 +28,7 @@ export default function NewWorker({
     const val = e.target.value;
     setInfoWorker({ ...infoWorker, [name]: val });
   };
+  // otro cambio
 
   const newAccount = async (e) => {
     e.preventDefault();

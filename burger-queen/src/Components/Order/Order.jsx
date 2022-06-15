@@ -19,7 +19,7 @@ function Order({ newClient, activeName }) {
   const [structureList, setStructure] = useState();
   const [listOrder, setListOrder] = useState([]);
   const [products, setProducts] = useState();
-  const [typeFood, setTypeFood] = useState('meal');
+  const [typeFood, setTypeFood] = useState('breakfast');
   const navigate = useNavigate();
 
   const initialValues = {

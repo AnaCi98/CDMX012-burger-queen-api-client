@@ -2,12 +2,7 @@ export const dataProducts = async (route) => {
   const allProducts = await fetch(`https://629d281fc6ef9335c0998121.mockapi.io/${route}`).then((response) => response.json()).then((products) => products);
   return allProducts;
 };
-/* const getOrder = async () => {
-  const currentOrder = await ((dataProducts('/order').GET`/order.id`).then((response) =>
-   response.json()).then((order) => order));
-  console.log(currentOrder);
-};
-getOrder(); */
+
 export const changeState = async (id) => {
   const putMethod = {
     method: 'PUT', // Method itself
@@ -64,6 +59,3 @@ export const editProduct = async (id, productName, productPrice, productImage, p
   const response = await fetch('https://629d281fc6ef9335c0998121.mockapi.io/products', putMethod);
   return response.json();
 };
-
-/* const deleteProduct = () => {};
-const addProduct = () => {}; */

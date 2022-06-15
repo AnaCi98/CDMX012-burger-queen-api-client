@@ -11,10 +11,12 @@ import ListEmployees from './ListEmployees';
 import Stocktaking from './Stocktaking';
 import './Admin.css';
 import { dataProducts, editProduct } from '../data';
+import ModalConfirmation from '../ModalConfirmation';
 
 function Admin({ getOutSession }) {
   // variable de estado que contiene la informacion de TODOS los empleades,
   // a diferencia de infoPerUser, que solo contiene la informacion de UN empleade
+  const [confirmation, setConfirmation] = useState(true);
   const [workers, setWorkersData] = useState();
   const [modalNewWorker, setNewWorker] = useState(false);
   // variable de estado para filtrar listas, ya sea empleades o productos
@@ -43,6 +45,14 @@ function Admin({ getOutSession }) {
   // funcion para eliminar empleade
   const deleteEmployee = async (id) => {
     deleteData(id).then(() => dataEmployee());
+  };
+  // abrir modal de confirmacion
+  const openConfirmation = () => {
+    setConfirmation(true);
+  };
+  // cerrar modal de confirmacion
+  const closeConfirmation = () => {
+    setConfirmation(false);
   };
 
   // funcion para editar empleade
@@ -100,6 +110,7 @@ function Admin({ getOutSession }) {
         onClick={() => getOutSession()}
       />
       <section className="Workers-section">
+        <ModalConfirmation closeConfirmation={closeConfirmation} confirmation={confirmation} />
         <NewWorker
           modalNewWorker={modalNewWorker}
           closeModal={closeModal}
@@ -122,7 +133,7 @@ function Admin({ getOutSession }) {
         </section>
         {
           filter === 'empleadxs'
-            ? <ListEmployees editFunction={editFunction} workers={workers} deleteEmployee={deleteEmployee} />
+            ? <ListEmployees editFunction={editFunction} workers={workers} deleteEmployee={deleteEmployee} openConfirmation={openConfirmation} />
             : <Stocktaking allProducts={allProducts} editProduct={editProduct} />
         }
       </section>
