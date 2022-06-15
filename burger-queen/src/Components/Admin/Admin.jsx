@@ -54,6 +54,10 @@ function Admin({ getOutSession }) {
       .then(() => { setNewWorker(false); dataEmployee(); })
       .catch((error) => console.log(error));
   };
+  const editProductAdmin = (id, infoProduct) => {
+    editProduct(id, infoProduct);
+    setNewProduct(false);
+  };
 
   useEffect(() => {
     dataEmployee();
@@ -123,7 +127,7 @@ function Admin({ getOutSession }) {
           edit={edit}
           infoPerProduct={infoPerProduct}
           closeEditModal={closeEditModal}
-          editProductFunction={editProductFunction}
+          editProductAdmin={editProductAdmin}
         />
         <section className="Workers-filter">
           <button type="button" className={`Workers-button-${pressBtn.Employees}`} onClick={() => { setFilter('empleadxs'); setPressBtn(initialValues); }}>

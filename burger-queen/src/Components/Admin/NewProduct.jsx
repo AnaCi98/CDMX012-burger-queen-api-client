@@ -2,16 +2,15 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import { useEffect, useState } from 'react';
-// import { editProduct } from '../data';
+import { createProduct } from '../data';
 import './NewWorker.css';
 
 export default function NewProduct({
   modalNewProduct,
-  closeModal, edit, infoPerProduct, closeEditModal, editProduct,
+  closeModal, edit, infoPerProduct, closeEditModal, editProductAdmin,
 }) {
   // valores iniciales del formulario
   const initialValues = {
-    id: infoPerProduct.id,
     name: '',
     price: '',
     image: 'URL',
@@ -20,7 +19,7 @@ export default function NewProduct({
   };
   // infoWorker se inicializa con valores iniciales del formulario
   const [infoProduct, setInfoProduct] = useState(initialValues);
-  // const userActual = auth.currentUser;
+
   const changeInfo = (e) => {
     e.persist();
     const { name } = e.target;
@@ -28,21 +27,15 @@ export default function NewProduct({
     setInfoProduct({ ...infoProduct, [name]: val });
   };
 
-  // const newProduct = async (e) => {
-  /*  e.preventDefault();
-    createProduct(
-      infoWorker.correo,
-      infoWorker.password,
-    ).then((userCredential) => {
-      submitWorker(
-        infoWorker.nombre,
-        infoWorker.rol,
-        infoWorker.correo,
-        infoWorker.turno,
-        userCredential.user.uid,
-      ).then(() => currentUserActual(userActual));
-    }); */
-  // };
+  const newProduct = async (e) => {
+    e.preventDefault();
+    await createProduct(
+      infoProduct.name,
+      infoProduct.price,
+      'url',
+      infoProduct.type,
+    );
+  };
 
   useEffect(() => {
     // Se setea setInfoWorker con infoPerUser si edit es true
@@ -71,7 +64,7 @@ export default function NewProduct({
           ) : null}
           <input className="admin-form-input" type="text" placeholder="Producto" defaultValue={infoProduct.name} name="name" onChange={changeInfo} />
           <input placeholder="Precio" type="text" defaultValue={infoProduct.price} name="price" onChange={changeInfo} />
-          <select defaultValue="DEFAULT" name="Tipo">
+          <select defaultValue="DEFAULT" name="type">
             <option value="DEFAULT" hidden>Tipo</option>
             <option value="meal">Desayuno</option>
             <option value="breakfast">Comida</option>
@@ -81,7 +74,7 @@ export default function NewProduct({
               type="button"
               className="Add-worker"
               onClick={(e) => {
-                addProduct(e);
+                newProduct(e);
               }}
             >
               Crear
@@ -92,12 +85,7 @@ export default function NewProduct({
               type="button"
               className="Add-worker"
               onClick={() => {
-                editProduct(
-                  infoProduct.id,
-                  infoProduct.name,
-                  infoProduct.price,
-                  infoProduct.type,
-                );
+                editProductAdmin(infoProduct.id, infoProduct);
               }}
             >
               Actualizar
