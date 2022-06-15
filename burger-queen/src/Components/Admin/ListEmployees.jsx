@@ -3,7 +3,7 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import './Admin.css';
 
-function ListEmployees({ workers, editFunction, deleteEmployee }) {
+function ListEmployees({ workers, editFunction, openConfirmation }) {
   return (
     <section className="Table-section-workers">
       <table className="Workers-table">
@@ -30,7 +30,7 @@ function ListEmployees({ workers, editFunction, deleteEmployee }) {
               </td>
               <td>
                 <img className="Edit-workers" alt="button to edit" src="../img/Edit.png" onClick={() => { editFunction(worker); console.log(worker); }} />
-                <img className="Delete-workers" alt="button to delete" src="../img/Delete.png" onClick={() => deleteEmployee(worker.id)} />
+                <img className="Delete-workers" alt="button to delete" src="../img/Delete.png" onClick={() => openConfirmation(worker.id)} />
               </td>
             </tr>
           ))}

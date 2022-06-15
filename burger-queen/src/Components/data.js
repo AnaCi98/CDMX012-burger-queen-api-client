@@ -39,7 +39,29 @@ export const addNewOrder = async (newClient, activeName, structureList) => {
   return response.json();
 };
 
-export const editProduct = async (id, productName, productPrice, productImage, productType) => {
+export const editProduct = async (id, product) => {
+  const date = new Date();
+  const [day, month, year] = [date.getDay(), date.getMonth(), date.getFullYear()];
+
+  const putMethod = {
+    method: 'PUT',
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8',
+    },
+    body: JSON.stringify({
+      name: product.name,
+      price: product.price,
+      image: product.image,
+      type: product.type,
+      dateEntry: [day, month, year],
+    }),
+  };
+  const response = await fetch(`https://629d281fc6ef9335c0998121.mockapi.io/products/${id}`, putMethod);
+  return response.json();
+};
+
+// eslint-disable-next-line max-len
+export const createProduct = async (id, productName, productPrice, productImage, productType) => {
   const date = new Date();
   const [day, month, year] = [date.getDay(), date.getMonth(), date.getFullYear()];
 
@@ -56,6 +78,8 @@ export const editProduct = async (id, productName, productPrice, productImage, p
       dateEntry: [day, month, year],
     }),
   };
-  const response = await fetch('https://629d281fc6ef9335c0998121.mockapi.io/products', putMethod);
+  const response = await fetch(`https://629d281fc6ef9335c0998121.mockapi.io/products/${id}`, putMethod);
   return response.json();
 };
+/* const deleteProduct = () => {};
+const addProduct = () => {}; */
