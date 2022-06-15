@@ -11,18 +11,21 @@ import ListEmployees from './ListEmployees';
 import Stocktaking from './Stocktaking';
 import './Admin.css';
 import { dataProducts, editProduct } from '../data';
+import NewProduct from './NewProduct';
 
 function Admin({ getOutSession }) {
   // variable de estado que contiene la informacion de TODOS los empleades,
   // a diferencia de infoPerUser, que solo contiene la informacion de UN empleade
   const [workers, setWorkersData] = useState();
   const [modalNewWorker, setNewWorker] = useState(false);
+  const [modalNewProduct, setNewProduct] = useState(false);
   // variable de estado para filtrar listas, ya sea empleades o productos
   const [filter, setFilter] = useState('empleadxs');
   const [edit, setEdit] = useState(false);
   // infoPerUser es la variable de estado que
   // contiene la informacion de cada uno de los empleades (revisar linea 72 de Admin)
   const [infoPerUser, setInfoPerUser] = useState();
+  const [infoPerProduct, setInfoPerProduct] = useState();
   const navigate = useNavigate();
   // variables efecto de botones
   const initialValues = {
@@ -59,6 +62,7 @@ function Admin({ getOutSession }) {
   // funcion para cerrar modal (modalNewWorker)
   const closeModal = () => {
     setNewWorker(false);
+    setNewProduct(false);
   };
 
   // funcion para cambiar de estado la variable edit a false,
@@ -78,7 +82,11 @@ function Admin({ getOutSession }) {
     setInfoPerUser(worker);
     setNewWorker(true);
   };
-
+  const editProductFunction = (product) => {
+    setEdit(true);
+    setInfoPerProduct(product);
+    setNewProduct(true);
+  };
   // funciones para productos
   const [allProducts, setAllProducts] = useState();
 
@@ -109,6 +117,14 @@ function Admin({ getOutSession }) {
           editEmployee={editEmployee}
           filter={filter}
         />
+        <NewProduct
+          modalNewProduct={modalNewProduct}
+          closeModal={closeModal}
+          edit={edit}
+          infoPerProduct={infoPerProduct}
+          closeEditModal={closeEditModal}
+          editProductFunction={editProductFunction}
+        />
         <section className="Workers-filter">
           <button type="button" className={`Workers-button-${pressBtn.Employees}`} onClick={() => { setFilter('empleadxs'); setPressBtn(initialValues); }}>
             Empleades
@@ -123,7 +139,7 @@ function Admin({ getOutSession }) {
         {
           filter === 'empleadxs'
             ? <ListEmployees editFunction={editFunction} workers={workers} deleteEmployee={deleteEmployee} />
-            : <Stocktaking allProducts={allProducts} editProduct={editProduct} />
+            : <Stocktaking editProductFunction={editProductFunction} allProducts={allProducts} editProduct={editProduct} />
         }
       </section>
     </section>

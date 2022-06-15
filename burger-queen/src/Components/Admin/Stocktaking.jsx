@@ -3,18 +3,8 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import './Stocktaking.css';
 
-function Stocktaking({ allProducts, editProduct }) {
-/*   const [allProducts, setAllProducts] = useState();
-
-  const allDataProducts = async () => {
-    const products = await dataProducts('products');
-    setAllProducts(products);
-  };
-
-  useEffect(() => {
-    allDataProducts();
-  }, []); */
-  const deleteProduct = () => { console.log('holi'); };
+function Stocktaking({ allProducts, editProductFunction }) {
+  // const deleteProduct = () => { console.log('holi'); };
 
   console.log(allProducts);
 
@@ -33,8 +23,8 @@ function Stocktaking({ allProducts, editProduct }) {
               <td>{product.price}</td>
               <td>{product.type}</td>
               <td>
-                <img className="Edit-workers" alt="button to edit" src="../img/Edit.png" onClick={() => editProduct(product.id, product.name, product.price, product.image, product.type)} />
-                <img className="Delete-workers" alt="button to delete" src="../img/Delete.png" onClick={() => deleteProduct()} />
+                <img className="Edit-workers" alt="button to edit" src="../img/Edit.png" onClick={() => { editProductFunction(product); console.log(product); }} />
+                <img className="Delete-workers" alt="button to delete" src="../img/Delete.png" onClick={() => console.log(product)} />
               </td>
             </tr>
           )) : null}
