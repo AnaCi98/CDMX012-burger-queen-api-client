@@ -2,11 +2,10 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import './Stocktaking.css';
+import '../ModalNewClient/ModalNewClient.css';
 
-function Stocktaking({ allProducts, editProductFunction }) {
+function Stocktaking({ allProducts, editProductFunction, openConfirmation }) {
   // const deleteProduct = () => { console.log('holi'); };
-
-  console.log(allProducts);
 
   return (
     <section className="Table-section-workers">
@@ -24,7 +23,7 @@ function Stocktaking({ allProducts, editProductFunction }) {
               <td>{product.type}</td>
               <td>
                 <img className="Edit-workers" alt="button to edit" src="../img/Edit.png" onClick={() => { editProductFunction(product); console.log(product); }} />
-                <img className="Delete-workers" alt="button to delete" src="../img/Delete.png" onClick={() => console.log(product)} />
+                <img className="Delete-workers" alt="button to delete" src="../img/Delete.png" onClick={() => openConfirmation(product.id)} />
               </td>
             </tr>
           )) : null}

@@ -2,12 +2,11 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import { useEffect, useState } from 'react';
-import { createProduct } from '../data';
 import './NewWorker.css';
 
 export default function NewProduct({
   modalNewProduct,
-  closeModal, edit, infoPerProduct, closeEditModal, editProductAdmin,
+  closeModal, edit, infoPerProduct, closeEditModal, editProductAdmin, createProductAdmin,
 }) {
   // valores iniciales del formulario
   const initialValues = {
@@ -25,16 +24,6 @@ export default function NewProduct({
     const { name } = e.target;
     const val = e.target.value;
     setInfoProduct({ ...infoProduct, [name]: val });
-  };
-
-  const newProduct = async (e) => {
-    e.preventDefault();
-    await createProduct(
-      infoProduct.name,
-      infoProduct.price,
-      'url',
-      infoProduct.type,
-    );
   };
 
   useEffect(() => {
@@ -64,17 +53,17 @@ export default function NewProduct({
           ) : null}
           <input className="admin-form-input" type="text" placeholder="Producto" defaultValue={infoProduct.name} name="name" onChange={changeInfo} />
           <input placeholder="Precio" type="text" defaultValue={infoProduct.price} name="price" onChange={changeInfo} />
-          <select defaultValue="DEFAULT" name="type">
+          <select defaultValue="DEFAULT" name="type" onChange={changeInfo}>
             <option value="DEFAULT" hidden>Tipo</option>
-            <option value="meal">Desayuno</option>
-            <option value="breakfast">Comida</option>
+            <option value="breakfast">Desayuno</option>
+            <option value="meal">Comida</option>
           </select>
           {edit ? null : (
             <button
               type="button"
               className="Add-worker"
-              onClick={(e) => {
-                newProduct(e);
+              onClick={() => {
+                createProductAdmin(infoProduct);
               }}
             >
               Crear

@@ -61,12 +61,12 @@ export const editProduct = async (id, product) => {
 };
 
 // eslint-disable-next-line max-len
-export const createProduct = async (id, productName, productPrice, productImage, productType) => {
+export const createProduct = async (productName, productPrice, productImage, productType) => {
   const date = new Date();
   const [day, month, year] = [date.getDay(), date.getMonth(), date.getFullYear()];
 
   const putMethod = {
-    method: 'PUT',
+    method: 'POST',
     headers: {
       'Content-type': 'application/json; charset=UTF-8', // Indicates the content
     },
@@ -78,8 +78,12 @@ export const createProduct = async (id, productName, productPrice, productImage,
       dateEntry: [day, month, year],
     }),
   };
-  const response = await fetch(`https://629d281fc6ef9335c0998121.mockapi.io/products/${id}`, putMethod);
+  const response = await fetch('https://629d281fc6ef9335c0998121.mockapi.io/products', putMethod);
   return response.json();
 };
-/* const deleteProduct = () => {};
-const addProduct = () => {}; */
+
+export const deleteProduct = async (id) => {
+  const deleteMethod = { method: 'DELETE' };
+  const response = await fetch(`https://629d281fc6ef9335c0998121.mockapi.io/products/${id}`, deleteMethod);
+  return response.json();
+};

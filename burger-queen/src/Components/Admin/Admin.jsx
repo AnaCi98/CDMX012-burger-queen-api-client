@@ -10,7 +10,9 @@ import NewWorker from './NewWorker';
 import ListEmployees from './ListEmployees';
 import Stocktaking from './Stocktaking';
 import './Admin.css';
-import { dataProducts, editProduct } from '../data';
+import {
+  dataProducts, editProduct, deleteProduct, createProduct,
+} from '../data';
 import ModalConfirmation from '../ModalConfirmation';
 import NewProduct from './NewProduct';
 
@@ -21,7 +23,7 @@ function Admin({ getOutSession }) {
   const [workers, setWorkersData] = useState();
   const [modalNewWorker, setNewWorker] = useState(false);
   const [modalNewProduct, setNewProduct] = useState(false);
-  const [idWorker, setId] = useState();
+  const [elementId, setId] = useState();
   // variable de estado para filtrar listas, ya sea empleades o productos
   const [filter, setFilter] = useState('empleadxs');
   const [edit, setEdit] = useState(false);
@@ -51,9 +53,9 @@ function Admin({ getOutSession }) {
     deleteData(id).then(() => dataEmployee());
   };
   // abrir modal de confirmacion
-  const openConfirmation = (idEmployee) => {
+  const openConfirmation = (idConfirmation) => {
     setConfirmation(true);
-    setId(idEmployee);
+    setId(idConfirmation);
   };
   // cerrar modal de confirmacion
   const closeConfirmation = () => {
@@ -111,7 +113,25 @@ function Admin({ getOutSession }) {
     editProduct(id, infoProduct)
       .then(() => { allDataProducts(); setNewProduct(false); });
   };
+  const createProductAdmin = (infoProduct) => {
+    createProduct(
+      infoProduct.name,
+      infoProduct.price,
+      'url',
+      infoProduct.type,
+    ).then(() => { allDataProducts(); setNewProduct(false); });
+  };
+  const filterModal = () => {
+    if (filter === 'empleaxs') {
+      setNewWorker(true);
+    } else {
+      setNewProduct(true);
+    }
+  };
 
+  const deleteProductAdmin = () => {
+    deleteProduct(elementId).then(() => { allDataProducts(); setConfirmation(false); });
+  };
   useEffect(() => {
     allDataProducts();
   }, []);
@@ -125,7 +145,7 @@ function Admin({ getOutSession }) {
         onClick={() => getOutSession()}
       />
       <section className="Workers-section">
-        <ModalConfirmation closeConfirmation={closeConfirmation} confirmation={confirmation} id={idWorker} deleteEmployee={deleteEmployee} />
+        <ModalConfirmation closeConfirmation={closeConfirmation} confirmation={confirmation} id={elementId} deleteEmployee={deleteEmployee} deleteProduct={deleteProductAdmin} filter={filter} />
         <NewWorker
           modalNewWorker={modalNewWorker}
           closeModal={closeModal}
@@ -142,6 +162,7 @@ function Admin({ getOutSession }) {
           infoPerProduct={infoPerProduct}
           closeEditModal={closeEditModal}
           editProductAdmin={editProductAdmin}
+          createProductAdmin={createProductAdmin}
         />
         <section className="Workers-filter">
           <button type="button" className={`Workers-button-${pressBtn.Employees}`} onClick={() => { setFilter('empleadxs'); setPressBtn(initialValues); }}>
@@ -150,14 +171,14 @@ function Admin({ getOutSession }) {
           <button type="button" className={`Workers-button-${pressBtn.Products}`} onClick={() => { setFilter('products'); setPressBtn(pressProducts); }}>
             Productos
           </button>
-          <button type="button" className="Workers-button-add" onClick={() => { setNewWorker(true); }}>
+          <button type="button" className="Workers-button-add" onClick={() => filterModal()}>
             Agregar
           </button>
         </section>
         {
           filter === 'empleadxs'
             ? <ListEmployees editFunction={editFunction} workers={workers} deleteEmployee={deleteEmployee} openConfirmation={openConfirmation} />
-            : <Stocktaking editProductFunction={editProductFunction} allProducts={allProducts} editProduct={editProduct} />
+            : <Stocktaking editProductFunction={editProductFunction} allProducts={allProducts} editProduct={editProduct} openConfirmation={openConfirmation} />
         }
       </section>
     </section>
