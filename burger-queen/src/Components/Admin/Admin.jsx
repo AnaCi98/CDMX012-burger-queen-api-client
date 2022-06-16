@@ -66,10 +66,6 @@ function Admin({ getOutSession }) {
       .then(() => { setNewWorker(false); dataEmployee(); })
       .catch((error) => console.log(error));
   };
-  const editProductAdmin = (id, infoProduct) => {
-    editProduct(id, infoProduct);
-    setNewProduct(false);
-  };
 
   useEffect(() => {
     dataEmployee();
@@ -109,6 +105,11 @@ function Admin({ getOutSession }) {
   const allDataProducts = async () => {
     const products = await dataProducts('products');
     setAllProducts(products);
+  };
+
+  const editProductAdmin = (id, infoProduct) => {
+    editProduct(id, infoProduct)
+      .then(() => { allDataProducts(); setNewProduct(false); });
   };
 
   useEffect(() => {
